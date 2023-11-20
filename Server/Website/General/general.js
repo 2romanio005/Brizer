@@ -1,6 +1,5 @@
 function uploadContent(base_link, content_link) {
-    console.log('start uploadContent');       // LOG
-    console.log(base_link, content_link);     // LOG
+    console.log('start uploadContent from:', base_link, content_link);       // LOG
     const contentBody = document.getElementById('contentBody');
 
     contentBody.innerHTML = "loading...";
@@ -11,15 +10,16 @@ function uploadContent(base_link, content_link) {
         http.open('GET', content_link);
         http.onreadystatechange = function () {
             if (http.readyState == 4) {
-                //contentBody.innerHTML = http.responseText;
+                contentBody.innerHTML = http.responseText;      // подставить контент загруженой страницы
+
                 console.log('history:', history);     // LOG
-                window.location.hash = content_link;
+                MainUrl.searchParams.set(paramContentLink, content_link)
+                window.history.pushState({page: ""}, "", MainUrl.href);
                 console.log("href:", window.location.href);    // LOG
-                window.location.href = base_link
+                //window.location.href = base_link
                 //history.pushState('data to be passed', 'Title of the page', base_link);
                 //history.pushState('data to be passed', 'Title of the page', base_link + '/?ContentLink=' + content_link);
                 console.log('history:', history);     // LOG
-                //history.;
             } else {
                 //обработка процесса загрузки
             }
@@ -27,7 +27,7 @@ function uploadContent(base_link, content_link) {
         http.send(null);
     }
     else {
-        document.location = base_link + content_link;
+        //document.location = base_link + content_link;
     }
     console.log('fin uploadContent');      // LOG
 }
@@ -44,22 +44,15 @@ function createRequestObject() {
     }
 }
 
-function parseURL(URL, key){
-    let start_index = URL.indexOf('&' + key + '=') + key.length + 3;
-    let fin_index = URL.indexOf('&', start_index);
-    if(fin_index == -1){
-        fin_index = URL.length;
-    }
-    return URL.slice(start_index, fin_index);
+let MainUrl = new URL(window.location.href);
+ContentLink = MainUrl.searchParams.get(paramContentLink);
+if(ContentLink === null){
+    ContentLink = "./Content/Directing/index.html";
+    MainUrl.searchParams.append(paramContentLink, "./Content/Directing/index.html");
+    console.log("path: ", MainUrl.href);   // LOG
+    //window.history.replaceState({page: "Главная"}, "Главная", MainUrl.href);
 }
-
-let MainUrl = "http://127.0.0.1:3000/General/general.html/?ContentLink=./Content/Main/main.html&lol=123";
-let Qest = MainUrl.slice(MainUrl.indexOf('?'));
-Qest[0] = '&';              // сделать у всех ключей '&' в начале для одинаковости
-
-console.log("way:", parseURL(Qest, "ContentLink"));
-
-//parseURL(window.location.href, ContentLink);
+uploadContent(MainUrl.origin, ContentLink);
 
 
-//uploadContent('./Content/Main/main.html');
+
