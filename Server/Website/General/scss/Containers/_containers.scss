@@ -1,0 +1,40 @@
+$border_radius: var(--font-size);
+
+
+body {
+    background-color: var(--background_color);
+    color: var(--text_color);
+}
+
+nav {
+    //border: 3px solid var(--separation_border_color);
+
+    ul {
+        //border: 3px solid var(--separation_border_color);
+        list-style-type: none;
+    }
+}
+
+.nav_container {
+    //background-color: blue;
+
+    //border-radius: $border_radius;
+    //border: 3px solid var(--separation_border_color);
+    //border: 3px solid var(--separation_border_color);
+    h2 {
+        background-color: blue;
+        //border: 3px solid var(--separation_border_color);
+        border-radius: $border_radius 0 0 $border_radius;
+    }
+}
+
+.nav_left {
+    border-radius: 0 $border_radius $border_radius 0;
+}
+
+.nav_right {
+    border-radius: $border_radius 0 0 $border_radius;
+}
+
+
+@import "./containers_positions";

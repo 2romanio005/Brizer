@@ -1,0 +1,11 @@
+@import "./colors";
+
+:root{
+    --font-size: 20px;
+}
+
+$font-size: var(--font-size);
+$h1-font-size: calc(2 * var(--font-size));
+$h2-font-size: calc(3 * var(--font-size) / 2);
+
+

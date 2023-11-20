@@ -1,0 +1,26 @@
+1. arduino ide
+файл / настройки / дополнительные ссылки	вставляем это:
+https://arduino.esp8266.com/stable/package_esp8266com_index.json
+инстрменты / менеджер плат / 8266 устанавливаем
+
+2. грузим библиотеки
+
+3. качаем утилитку https://github.com/esp8266/arduino-esp8266fs-plugin/releases/tag/0.5.0
+	ESP8266FS-0.5.0.zip
+распаковываем в папку C:\Users\Vladimir\Desktop\arduino-1.8.7\tools\
+
+4. запускаем скетч из папки FS. Папка dada содержит сайт. Правим логин и пароль для доступа к wifi (вкладка wifi String _ssid String _password)
+Выбираем плату в списке 8266, скорость 115200, flash size 4M(FS - 1m, OTA-1019KB)
+ Грузим скетч на 8266, грузим сайт через меню инструменты / esp sketech data upload
+	сайт лжит в папке со скетчем в подпапке data
+Через моитор (115200) смотрим IP на esp и загружаем эту страницу.
+
+5. Возможности page.html смотрим 
+https://github.com/tretyakovsa/Sonoff_WiFi_switch/wiki/%D0%92%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8-page.htm%3F*
+редактирование через ctrl+m на странице
+урок с примером 
+https://www.youtube.com/watch?v=sDqsRT4hR5M&list=PLqquWc4xYgASLjCuRPLRQ0RZaMrPmk8SW&index=28
+
+
+
+

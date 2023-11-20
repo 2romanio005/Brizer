@@ -1,0 +1,420 @@
+<html>
+<head>
+	<title> Настройки бризера Borey </title>
+	
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="height=device-height, initial-scale=1">
+
+
+	<style>	
+		.text_mein_title{
+			font-size: calc( (100vw - 480px)/(1600 - 480) * (50 - 30) + 30px);
+			text-align: center;
+		}
+		.text{
+			font-size: calc( (100vw - 480px)/(1600 - 480) * (26 - 16) + 16px);
+		}
+			
+		.one_line{
+			display: flex;
+			justify-content: space-around;
+			margin-left: 4.9%;
+			margin-right: 4.9%;
+		}
+		.one_size{
+			width: calc( (100vw - 480px)/(1600 - 480) * (1350 - 300) + 300px);
+		}
+		.two_size{
+			width: calc( (100vw - 480px)/(1600 - 480) * (100 - 60) + 60px);
+		}
+		.three_size{
+			width: calc( (100vw - 480px)/(1600 - 480) * (100 - 43) + 43px);
+		}
+		.div_in_center{
+			position:relative;
+			left:0px;
+			top:50%;
+			transform:translateY(-50%);
+		}
+		
+		
+		
+		
+		#buttons {
+			text-align: center;
+			width:  calc(  (100vw - 480px) / (1600 - 480) * (200 - 160) + 160px );   
+			height: calc(( (100vw - 480px) / (1600 - 480) * (200 - 150) + 150px ) / 5);
+			background: #00ff00;
+			-webkit-border-radius: 100px / 60px;
+			-moz-border-radius: 100px / 60px;
+			border-radius: 100px;
+			border: 3px solid #008000;
+		}
+		.link_button{
+			display: inline-block;
+			margin-left: 50%;
+			transform: translateX(-50%);"
+		}	
+		a.img_buttons {
+			text-decoration: none;
+			color: #ffffff;          
+		}
+		a.img_buttons:hover{ 
+			text-decoration: none;
+			color: #000000;
+			cursor: pointer;
+		} 
+		a.img_buttons:active{    
+			text-decoration: none;
+			color: #ff0000;
+		} 
+		.text_buttons{
+			font-size: calc( (100vw - 480px)/(1600 - 480) * (30 - 21) + 21px);
+			text-align: center;
+			position:relative;
+			top:50%;
+			transform:translateY(-50%);
+		}
+	</style>
+</head>
+
+
+<body>
+		<p class="text_mein_title" style="color: #00ff00; margin-bottom: 0px"> Настройки бризера Borey </p>
+		<hr>
+		
+		
+		<div style="display: flex; justify-content: space-around; margin-left: 30%; margin-right: 30%;">
+			<div>
+				<div class="link_button">
+					<a href="index.html" class="img_buttons">
+						<div id="buttons">
+							<div class="text_buttons">Бризер Ромы</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			
+			<div>&nbsp;&nbsp;&nbsp;</div>
+			
+			<div>
+				<div class="link_button">
+					<a href="http://94.242.44.182:56567/settings.html" class="img_buttons">
+						<div id="buttons">
+							<div class="text_buttons" style="font-size: calc( (100vw - 480px)/(1600 - 480) * (26 - 18) + 18px);">Настройки Ромы</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<hr>
+
+		
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Уровень приемлемого CO<sub>2</sub> в комнате:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="CO2_no_good">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					ppm.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время проветривания при привышении заданого CO<sub>2</sub>:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="on_vent">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					мин.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Принудительно включить/выключить вентилятор:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="vent">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					мин.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Желаемая температура в помещение:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_float.apply(this)" size="1%" id="celsius_NORM">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					°C.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время, через которое выключается проветривание, если печка не успевает нагреть воздух:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="check_temp">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					мин.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время схождения температур на выходе из бризера и комнатной:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="update_celsius_NORM">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					мин.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Уровень CO<sub>2</sub> отсутствия человека в помещение:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="CO2_out_people">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					ppm.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время проверки на отсутствие человека в помещение:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="time_out_people">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					мин.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время начала ночного режима вентилятора:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="time_nite">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					часов.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время конца ночного режима вентилятора:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="time_no_nite">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					часов.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		<div class="one_line">
+			<div class="text one_size" > 
+				Время перехода дисплея в спящий режим:
+			</div>
+			<div class="two_size">
+				<div class="div_in_center">
+					<input class="text" type="text" value="null" onkeyup="input_control_int.apply(this)" size="1%" id="on_display">
+				</div>
+			</div>
+			<div class="text three_size">
+				<div class="div_in_center">
+					сек.
+				</div>
+			</div>
+		</div>
+		<hr>
+		
+		
+		
+		
+		<div style="text-align: center; margin-bottom: 8px;">
+			<input class="text" style="background: #ffff00;" type="password" placeholder="password" size="4%" id="password">
+		</div>
+		
+		<div class="link_button">
+			<a class="img_buttons" onclick="alerted();">
+				<div id="buttons">
+					<div class="text_buttons">Сохранить</div>
+				</div>
+			</a>
+		</div>
+			
+		<div style="text-align: center; margin-top: 8px;">
+			<input style="font-size: calc( (100vw - 480px)/(1600 - 480) * (16 - 12) + 12px);" type="text" placeholder="41023,728181607" size="12%" id="memory">
+		</div>
+			
+		<hr>
+		
+		
+		<!-- <div class="link_button"> -->
+			<!-- <input type="image" height="60px" src="button_save_min.jpeg" alt="Сохранить Save" onclick="alerted();"> -->
+		<!-- </div> -->
+		
+		
+		
+		
+		<script>
+		
+			function alerted(){
+				var url = '/save?';
+				
+				url += "CO2_no_good=";			url += document.getElementById("CO2_no_good").value;
+				url += ";on_vent=";				url += document.getElementById("on_vent").value;
+				url += ";vent=";				url += document.getElementById("vent").value;
+				url += ";celsius_NORM=";		url += document.getElementById("celsius_NORM").value;
+				url += ";check_temp=";			url += document.getElementById("check_temp").value;
+				url += ";update_celsius_NORM=";	url += document.getElementById("update_celsius_NORM").value;
+				url += ";CO2_out_people=";		url += document.getElementById("CO2_out_people").value;
+				url += ";time_out_people=";		url += document.getElementById("time_out_people").value;
+				url += ";time_nite=";			url += document.getElementById("time_nite").value;
+				url += ";time_no_nite=";		url += document.getElementById("time_no_nite").value;
+				url += ";on_display=";			url += document.getElementById("on_display").value;
+				url += ";memory=";				url += document.getElementById("memory").value;
+				url += ";password=";            url += document.getElementById("password").value;
+				var save = new XMLHttpRequest();
+				save.open('GET', url, true);
+				save.onload = function() {
+					switch(save.responseText){
+						case "1":
+							document.getElementById("password").style.background = "#00ff00";
+							break;
+						case "2":
+							document.getElementById("password").style.background = "#0000ff";
+							break;
+						default:
+							document.getElementById("password").style.background = "#ff0000";
+					}
+				}
+				save.send();		
+				document.getElementById("password").style.background = "#ffff00";				
+			}
+			
+			
+			var timer = window.setInterval(load_date, 60000);
+			
+			function input_control_int(){
+				this.value = this.value.replace(/[^\d]/g,'');	
+				
+				window.clearInterval(timer);
+				timer = window.setInterval(load_date, 60000);
+			}
+			function input_control_float(){
+				this.value = this.value.replace(/[A-Z a-z А-Я а-я Ёё !-+,;:^&<>@/?_|=~`\\\[\]{}-]/,'');
+				
+				window.clearInterval(timer);
+				timer = window.setInterval(load_date, 60000);
+			}
+			
+			
+			
+			function load_date(){
+				var load_settings = new XMLHttpRequest();
+				load_settings.open('GET', '/load_settings', true);
+				load_settings.onload = function() {
+					var ansver = load_settings.responseText.split(';');
+					
+					document.getElementById("CO2_no_good").value = ansver[0];
+					document.getElementById("on_vent").value = ansver[1];
+					document.getElementById("vent").value = ansver[2];
+					document.getElementById("celsius_NORM").value = ansver[3];
+					document.getElementById("check_temp").value = ansver[4];
+					document.getElementById("update_celsius_NORM").value = ansver[5];
+					document.getElementById("CO2_out_people").value = ansver[6];
+					document.getElementById("time_out_people").value = ansver[7];
+					document.getElementById("time_nite").value = ansver[8];
+					document.getElementById("time_no_nite").value = ansver[9];
+					document.getElementById("on_display").value = ansver[10];
+					
+				}
+				load_settings.send();
+			}
+
+
+
+
+
+			document.addEventListener('DOMContentLoaded', load_date);
+		</script>
+		
+		
+		
+		
+		
+		
+</body>
+</html>

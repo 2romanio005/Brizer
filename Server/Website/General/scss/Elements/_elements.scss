@@ -1,0 +1,38 @@
+*{
+    font-size: $font-size;
+}
+
+hr {
+    color: var(--separation_border_color);
+}
+
+
+h1 {
+    text-align: center;
+    color: var(--green_color);
+    font-size: $h1-font-size;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text_color);
+    font-size: $h2-font-size;
+    //background-color:burlywood;
+}
+
+button, 
+input[type="button"],
+a {
+    all: unset;
+    background-color: var(--green_color);
+    border: 3px solid var(--green_border_color);
+    color: var(--background_color);
+    // padding: 5px 10px;
+    // margin: 3px 0px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+
+@import "./elements_positions";

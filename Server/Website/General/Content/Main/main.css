@@ -1,0 +1,80 @@
+main .chart .ct-chart {
+  text-align: center;
+  height: 10px;
+}
+main .chart .ct-series-a .ct-line,
+main .chart .ct-series-a .ct-point {
+  stroke: var(--chart_line_color_a);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_a {
+  background-color: var(--chart_line_color_a);
+}
+main .chart .ct-series-b .ct-line,
+main .chart .ct-series-b .ct-point {
+  stroke: var(--chart_line_color_b);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_b {
+  background-color: var(--chart_line_color_b);
+}
+main .chart .ct-series-c .ct-line,
+main .chart .ct-series-c .ct-point {
+  stroke: var(--chart_line_color_c);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_c {
+  background-color: var(--chart_line_color_c);
+}
+main .chart .ct-series-d .ct-line,
+main .chart .ct-series-d .ct-point {
+  stroke: var(--chart_line_color_d);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_d {
+  background-color: var(--chart_line_color_d);
+}
+main .chart .ct-series-e .ct-line,
+main .chart .ct-series-e .ct-point {
+  stroke: var(--chart_line_color_e);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_e {
+  background-color: var(--chart_line_color_e);
+}
+main .chart .ct-series-f .ct-line,
+main .chart .ct-series-f .ct-point {
+  stroke: var(--chart_line_color_f);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_f {
+  background-color: var(--chart_line_color_f);
+}
+main .chart .ct-series-g .ct-line,
+main .chart .ct-series-g .ct-point {
+  stroke: var(--chart_line_color_g);
+  stroke-width: 3px;
+}
+main .chart ol .chart_signature_g {
+  background-color: var(--chart_line_color_g);
+}
+main .chart ol {
+  list-style-type: none;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  color: #000000;
+}
+main .chart ol li {
+  width: var(--font-size);
+  height: var(--font-size);
+  text-align: center;
+}
+
+main span {
+  margin-right: 50px;
+  white-space: nowrap;
+}
+main span span {
+  margin-right: 0px;
+}

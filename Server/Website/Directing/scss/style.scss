@@ -1,0 +1,15 @@
+$column_width: 200px;
+
+#two_column{
+    // background-color: #500000;
+
+    // display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+
+    justify-content: space-evenly;
+}
+
+
+

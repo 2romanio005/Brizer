@@ -1,0 +1,27 @@
+fieldset {
+  border: none;
+}
+fieldset table {
+  border-collapse: collapse;
+}
+fieldset table tr {
+  border: 1px solid var(--separation_border_color);
+}
+fieldset table tr td {
+  width: 100%;
+  max-width: 100%;
+}
+fieldset table tr td input {
+  background-color: var(--background_color);
+  color: var(--text_color);
+  border: 1px solid var(--separation_border_color);
+}
+fieldset input[type=password] {
+  background: #ffff00;
+}
+
+.screen_gorizont_center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
