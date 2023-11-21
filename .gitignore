@@ -1,4 +1,4 @@
 Старое/
 *.mp4
 Server/Website/.vs/
-Server/Website/tmp/
+Server/Website/.tmp/

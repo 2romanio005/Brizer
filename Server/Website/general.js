@@ -28,9 +28,8 @@ function uploadContent(base_link, content_link) {
         http.send(null);
     }
     else {
-        //document.location = base_link + content_link;
+        //window.location.href = base_link + content_link;
     }
-    console.log('fin uploadContent');      // LOG
 }
 
 // создание Request(ajax) объекта  
@@ -48,12 +47,12 @@ function createRequestObject() {
 let MainUrl = new URL(window.location.href);
 ContentLink = MainUrl.searchParams.get(paramContentLink);
 if(ContentLink === null){
-    ContentLink = "./Content/Directing/index.html";
-    MainUrl.searchParams.append(paramContentLink, "./Content/Directing/index.html");
+    ContentLink = "/Content/Directing/index.html";
+    MainUrl.searchParams.append(paramContentLink, "/Content/Directing/index.html");
     console.log("path: ", MainUrl.href);   // LOG
     //window.history.replaceState({page: "Главная"}, "Главная", MainUrl.href);
 }
-uploadContent(MainUrl.origin, ContentLink);
+uploadContent('./', ContentLink);
 
 
 
