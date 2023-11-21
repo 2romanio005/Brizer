@@ -1,0 +1,1 @@
+const paramContentLink = "ContentLink";   // имя параметра с путём к контенту 

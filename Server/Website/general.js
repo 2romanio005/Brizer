@@ -4,15 +4,16 @@ function uploadContent(base_link, content_link) {
 
     contentBody.innerHTML = "loading...";
 
-    delay(3000);
+    //delay(3000);
     var http = createRequestObject();
     if (http) {
-        http.open('GET', content_link);
+        http.open('GET', base_link + content_link);
         http.onreadystatechange = function () {
             if (http.readyState == 4) {
                 contentBody.innerHTML = http.responseText;      // подставить контент загруженой страницы
 
                 console.log('history:', history);     // LOG
+                MainUrl.origin
                 MainUrl.searchParams.set(paramContentLink, content_link)
                 window.history.pushState({page: ""}, "", MainUrl.href);
                 console.log("href:", window.location.href);    // LOG
