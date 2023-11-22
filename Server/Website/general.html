@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
 
+
     <link rel="stylesheet" href="./general.css">
 </head>
 
@@ -38,9 +39,8 @@
                     <li><a href="/94.242.44.182:56567/Content/Main/main.html" onclick="uploadContent('http:\/\/94.242.44.182:56567', '/Content/Main/main.html'); return false;">Главная бризер</a></li>
                     <li><a href="/94.242.44.182:56567/Content/Settings/settings.html" onclick="uploadContent('http:\/\/94.242.44.182:56567', '/Content/Settings/settings.html'); return false;">Настройки бризера</a></li>
                     
-                    <li><a href="/94.242.44.182:56567/Content/Main/main.html" onclick="uploadContent('./', '/Content/Main/main.html'); return false;">test Главная</a></li>
-                    <li><a href="/94.242.44.182:56567/Content/Settings/settings.html" onclick="uploadContent('./', '/Content/Settings/settings.html'); return false;">test Настройки бризера</a></li>
-                    
+                    <li><a href="lol" onclick="uploadContent('/Content/Main/main', 'http:\/\/127.0.0.1:3000/lol'); return false;">test Главная</a></li>
+                    <!-- <li><a href="/94.242.44.182:56567/Content/Settings/settings.html" onclick="uploadContent('./', '/Content/Settings/settings.html'); return false;">test Настройки бризера</a></li> -->
 
 
                     <!-- <li><input onclick="showContent('test.html')" type="button" value="Настройки бризера"></li> -->
@@ -50,7 +50,7 @@
     </div>
 
     <main id = contentBody>
-        loading...
+        Start
     </main>
 
     
@@ -60,4 +60,6 @@
     <script src="./constants.js"></script>
     <script src="./tmp.js"></script> 
     <script src="./general.js"></script>
+
+    <script src="./Content/Main/chartist/chartist.min.js"></script>
 </body>

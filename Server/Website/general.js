@@ -1,36 +1,4 @@
-function uploadContent(base_link, content_link) {
-    console.log('start uploadContent from:', base_link, content_link);       // LOG
-    const contentBody = document.getElementById('contentBody');
-
-    contentBody.innerHTML = "loading...";
-
-    //delay(3000);
-    var http = createRequestObject();
-    if (http) {
-        http.open('GET', base_link + content_link);
-        http.onreadystatechange = function () {
-            if (http.readyState == 4) {
-                contentBody.innerHTML = http.responseText;      // подставить контент загруженой страницы
-
-                console.log('history:', history);     // LOG
-                MainUrl.origin
-                MainUrl.searchParams.set(paramContentLink, content_link)
-                window.history.pushState({page: ""}, "", MainUrl.href);
-                console.log("href:", window.location.href);    // LOG
-                //window.location.href = base_link
-                //history.pushState('data to be passed', 'Title of the page', base_link);
-                //history.pushState('data to be passed', 'Title of the page', base_link + '/?ContentLink=' + content_link);
-                console.log('history:', history);     // LOG
-            } else {
-                //обработка процесса загрузки
-            }
-        }
-        http.send(null);
-    }
-    else {
-        //window.location.href = base_link + content_link;
-    }
-}
+//response.addHeader("Access-Control-Allow-Origin", "*");
 
 // создание Request(ajax) объекта  
 function createRequestObject() {
@@ -44,15 +12,107 @@ function createRequestObject() {
     }
 }
 
-let MainUrl = new URL(window.location.href);
-ContentLink = MainUrl.searchParams.get(paramContentLink);
-if(ContentLink === null){
-    ContentLink = "/Content/Directing/index.html";
-    MainUrl.searchParams.append(paramContentLink, "/Content/Directing/index.html");
-    console.log("path: ", MainUrl.href);   // LOG
-    //window.history.replaceState({page: "Главная"}, "Главная", MainUrl.href);
-}
-uploadContent('./', ContentLink);
+// возвращает подгруженный HTML файл
+function uploadHTML(url) {
+    return new Promise(function (resolve, reject) {
+        let http = createRequestObject();
+        if (!http) {
+            reject("failed createRequestObject() at upload HTML from" + url);
+        }
 
+        http.open('GET', url, true);
+        http.onreadystatechange = function () {
+            if (http.readyState == 4) {
+                resolve(http.responseText);      // подставить контент загруженой страницы
+            }
+        }
+        http.send(null);
+    });
+}
+
+// подгрузка JS кода в дети к father
+function uploadJS(url, type) {
+    return new Promise(function (resolve, reject) {
+        let script = document.createElement('script');
+        script.src = url;
+        script.type = type;
+        document.head.appendChild(script);
+        resolve();
+        // old_script = document.getElementById(url);
+        // if (old_script) {
+        //     resolve(old_script);          // уже загружен
+        // }
+
+        // let http = createRequestObject();
+        // if (!http) {
+        //     reject("failed createRequestObject() at upload JS from" + url);
+        // }
+
+        // http.open('GET', url, true);
+        // http.onreadystatechange = function () {
+        //     if (http.readyState == 4) {
+        //         if (http.status == 200) {
+        //             let script = document.createElement("script");
+        //             script.type = 'text/javascript';
+        //             script.id = url;
+        //             script.text = http.responseText;
+        //             document.head.appendChild(script);
+        //             //executeJS(father)
+        //             resolve(script);
+        //         } else {
+        //             reject("failed: " + url);
+        //         }
+        //     }
+        // }
+        // http.send(null);
+    });
+}
+
+// подгрузить основную часть страницы
+function uploadContent(pathnameContent, hrefData) {
+    console.log("==============================================")
+    console.log('start uploadContent.', pathnameContent, hrefData);       // LOG
+
+    const contentBody = document.getElementById('contentBody');
+    contentBody.innerHTML = "loading...";
+
+    let MainUrl = new URL(window.location.href);
+
+    // загрузка основного HTML
+    if (MainUrl.pathname != pathnameContent) {
+        uploadHTML(MainUrl.origin + pathnameContent + ".html")
+            .then((responseText) => { contentBody.innerHTML = responseText; console.log("uploadHTML() - OK") })
+            .catch((error) => console.error(error));
+    }
+
+    // изменение URL для правильной перезагрузки
+    MainUrl.searchParams.set(paramPathnameContent, pathnameContent);
+    MainUrl.searchParams.set(paramHrefData, hrefData);
+    window.history.pushState({ page: "" }, "", MainUrl.href);
+
+    // загрузка JS (обязательно после изменения URL)
+    uploadJS(pathnameContent + ".js", "module")
+        .then(() => {console.log("uploadJS() - OK")})
+        .catch((error) => console.error(error));
+}
+
+
+
+// вспоминаем, что за подстраница была до перезагрузки
+let MainUrl = new URL(window.location.href);
+pathnameContent = MainUrl.searchParams.get(paramPathnameContent);
+if (pathnameContent === null) {
+    pathnameContent = "/Content/Directing/index";
+    MainUrl.searchParams.append(paramPathnameContent, pathnameContent);
+    //window.history.replaceState({ page: "Главная" }, "Главная", MainUrl.href);
+}
+hrefData = MainUrl.searchParams.get(paramHrefData);
+if (hrefData === null) {
+    hrefData = "";
+    MainUrl.searchParams.append(paramHrefData, hrefData);
+}
+
+// загрузка той же подстраницы, что была до перезагрузки
+uploadContent(pathnameContent, hrefData);
 
 

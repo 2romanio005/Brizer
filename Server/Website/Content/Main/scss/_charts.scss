@@ -21,22 +21,28 @@ main {
     .chart {
         .ct-chart {
             text-align: center;
-            height: 10px;
         }
 
         @each $ch in $charts_characters {
-            .ct-series-#{$ch} {
+            .ct-series-#{$ch} {             // данные графика (линии и точки)          
 
-                .ct-line,
-                .ct-point {
+                .ct-line {          // линии на грфиках
                     stroke: var(--chart_line_color_#{$ch});
                     stroke-width: 3px;
                 }
+                
+                .ct-point{          // точки на грфиках
+                    stroke: var(--chart_line_color_#{$ch});
+                    stroke-width: 7px;
+                }
             }
 
-            ol .chart_signature_#{$ch} {
+            ol .chart_signature_#{$ch} {    // квадаратики под графиком
                 background-color: var(--chart_line_color_#{$ch});
             }
+        }
+        .ct-label{
+            background-color: white
         }
 
         ol {
