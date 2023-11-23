@@ -13,7 +13,7 @@ fieldset table tr td {
 }
 fieldset table tr td input {
   background-color: var(--background_color);
-  color: var(--text_color);
+  color: var(--font_color);
   border: 1px solid var(--separation_border_color);
 }
 fieldset input[type=password] {

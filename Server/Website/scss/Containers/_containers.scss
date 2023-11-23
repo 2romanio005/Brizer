@@ -3,27 +3,22 @@ $border_radius: var(--font-size);
 
 body {
     background-color: var(--background_color);
-    color: var(--text_color);
+    color: var(--font_color);
 }
 
 nav {
-    //border: 3px solid var(--separation_border_color);
-
     ul {
-        //border: 3px solid var(--separation_border_color);
         list-style-type: none;
     }
 }
 
 .nav_container {
+    background-color: red;
     //background-color: blue;
 
     //border-radius: $border_radius;
-    //border: 3px solid var(--separation_border_color);
-    //border: 3px solid var(--separation_border_color);
     h2 {
         background-color: blue;
-        //border: 3px solid var(--separation_border_color);
         border-radius: $border_radius 0 0 $border_radius;
     }
 }

@@ -1,4 +1,3 @@
-//response.addHeader("Access-Control-Allow-Origin", "*");
 
 // создание Request(ajax) объекта  
 function createRequestObject() {
@@ -69,9 +68,9 @@ function uploadJS(url, type) {
 }
 
 // подгрузить основную часть страницы
-function uploadContent(pathnameContent, hrefData) {
+function uploadContent(pathnameContent, originData) {
     console.log("==============================================")
-    console.log('start uploadContent.', pathnameContent, hrefData);       // LOG
+    console.log('start uploadContent.', pathnameContent, originData);       // LOG
 
     const contentBody = document.getElementById('contentBody');
     contentBody.innerHTML = "loading...";
@@ -87,32 +86,34 @@ function uploadContent(pathnameContent, hrefData) {
 
     // изменение URL для правильной перезагрузки
     MainUrl.searchParams.set(paramPathnameContent, pathnameContent);
-    MainUrl.searchParams.set(paramHrefData, hrefData);
+    MainUrl.searchParams.set(paramHostData, originData);
     window.history.pushState({ page: "" }, "", MainUrl.href);
 
     // загрузка JS (обязательно после изменения URL)
     uploadJS(pathnameContent + ".js", "module")
-        .then(() => {console.log("uploadJS() - OK")})
+        .then(() => { console.log("uploadJS() - OK") })
         .catch((error) => console.error(error));
 }
 
 
 
 // вспоминаем, что за подстраница была до перезагрузки
-let MainUrl = new URL(window.location.href);
-pathnameContent = MainUrl.searchParams.get(paramPathnameContent);
-if (pathnameContent === null) {
-    pathnameContent = "/Content/Directing/index";
-    MainUrl.searchParams.append(paramPathnameContent, pathnameContent);
-    //window.history.replaceState({ page: "Главная" }, "Главная", MainUrl.href);
-}
-hrefData = MainUrl.searchParams.get(paramHrefData);
-if (hrefData === null) {
-    hrefData = "";
-    MainUrl.searchParams.append(paramHrefData, hrefData);
+{
+    let MainUrl = new URL(window.location.href);
+    pathnameContent = MainUrl.searchParams.get(paramPathnameContent);
+    if (pathnameContent === null) {
+        pathnameContent = "/Content/Directing/index";
+        MainUrl.searchParams.append(paramPathnameContent, pathnameContent);
+        //window.history.replaceState({ page: "Главная" }, "Главная", MainUrl.href);
+    }
+    originData = MainUrl.searchParams.get(paramHostData);
+    if (originData === null) {
+        originData = "";
+        MainUrl.searchParams.append(paramHostData, originData);
+    }
 }
 
 // загрузка той же подстраницы, что была до перезагрузки
-uploadContent(pathnameContent, hrefData);
+uploadContent(pathnameContent, originData);
 
 

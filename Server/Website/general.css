@@ -5,10 +5,11 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background_color: #000000;
-    --separation_border_color: #c2c2c2;
-    --green_color: #00ff00;
-    --green_border_color: #008000;
-    --text_color: #ffffff;
+    --hr_color: #c2c2c2;
+    --header_color: #00ff00;
+    --button_background_color: #00ff00;
+    --button_border_color: #008000;
+    --font_color: #ffffff;
     --chart_line_color_a: #00ff00;
     --chart_line_color_b: #ffff00;
     --chart_line_color_c: #ff9000;
@@ -16,6 +17,8 @@
     --chart_line_color_e: #f000ff;
     --chart_line_color_f: #0000ff;
     --chart_line_color_g: #00ffff;
+    --chart_grid_color: #ffffff;
+    --chart_signature_font_color: #000000;
   }
 }
 :root {
@@ -29,13 +32,16 @@
 
 body {
   background-color: var(--background_color);
-  color: var(--text_color);
+  color: var(--font_color);
 }
 
 nav ul {
   list-style-type: none;
 }
 
+.nav_container {
+  background-color: red;
+}
 .nav_container h2 {
   background-color: blue;
   border-radius: var(--font-size) 0 0 var(--font-size);
@@ -71,7 +77,6 @@ nav ul li {
   position: fixed;
   display: flex;
   flex-shrink: 0;
-  background-color: red;
 }
 .nav_container h2 {
   writing-mode: vertical-rl;
@@ -110,18 +115,18 @@ nav ul li {
 }
 
 hr {
-  color: var(--separation_border_color);
+  color: var(--hr_color);
 }
 
 h1 {
   text-align: center;
-  color: var(--green_color);
+  color: var(--header_color);
   font-size: calc(2 * var(--font-size));
 }
 
 h2 {
   text-align: center;
-  color: var(--text_color);
+  color: var(--font_color);
   font-size: calc(3 * var(--font-size) / 2);
 }
 
@@ -129,8 +134,8 @@ button,
 input[type=button],
 a {
   all: unset;
-  background-color: var(--green_color);
-  border: 3px solid var(--green_border_color);
+  background-color: var(--button_background_color);
+  border: 3px solid var(--button_border_color);
   color: var(--background_color);
   border-radius: 20px;
   text-align: center;

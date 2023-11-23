@@ -79,14 +79,17 @@ main .chart ol .chart_signature_g {
   background-color: var(--chart_line_color_g);
 }
 main .chart .ct-label {
-  background-color: white;
+  color: var(--text_color);
+}
+main .chart .ct-grid {
+  stroke: var(--chart_grid_color);
 }
 main .chart ol {
   list-style-type: none;
   padding: 10px 0;
   display: flex;
   justify-content: space-evenly;
-  color: #000000;
+  color: var(--chart_signature_font_color);
 }
 main .chart ol li {
   width: var(--font-size);

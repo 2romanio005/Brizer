@@ -3,19 +3,19 @@
 }
 
 hr {
-    color: var(--separation_border_color);
+    color: var(--hr_color);
 }
 
 
 h1 {
     text-align: center;
-    color: var(--green_color);
+    color: var(--header_color);
     font-size: $h1-font-size;
 }
 
 h2 {
     text-align: center;
-    color: var(--text_color);
+    color: var(--font_color);
     font-size: $h2-font-size;
     //background-color:burlywood;
 }
@@ -24,8 +24,8 @@ button,
 input[type="button"],
 a {
     all: unset;
-    background-color: var(--green_color);
-    border: 3px solid var(--green_border_color);
+    background-color: var(--button_background_color);
+    border: 3px solid var(--button_border_color);
     color: var(--background_color);
     // padding: 5px 10px;
     // margin: 3px 0px;

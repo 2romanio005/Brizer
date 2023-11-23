@@ -1,3 +1,4 @@
+
 :root{
     --background_color: #ffffff;
     // --separation_border_color: #c2c2c2;
@@ -5,24 +6,28 @@
     // --green_color: #00ff00;
     // --green_border_color: #008000;
 
-    // --text_color: #ffffff;
+    // --font_color: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --background_color: #000000;            // фон
-        --separation_border_color: #c2c2c2;     // 
+        --hr_color: #c2c2c2;                    // полоска(hr)
+        
+        --header_color: #00ff00;                // заголовок
+        --button_background_color: #00ff00;     // фон кнопки
+        --button_border_color: #008000;         // краешек кнопок
 
-        --green_color: #00ff00;                 // 
-        --green_border_color: #008000;          // 
+        --font_color: #ffffff;                  // текст
 
-        --text_color: #ffffff;                  // 
+        --chart_line_color_a: #00ff00;          // первая полоса графика
+        --chart_line_color_b: #ffff00;          // вторая полоса графика
+        --chart_line_color_c: #ff9000;          // третья полоса графика
+        --chart_line_color_d: #ff0000;          // четвёртая полоса графика
+        --chart_line_color_e: #f000ff;          // пятая полоса графика
+        --chart_line_color_f: #0000ff;          // шестая полоса графика
+        --chart_line_color_g: #00ffff;          // седьмая полоса графика
 
-        --chart_line_color_a: #00ff00;          // 
-        --chart_line_color_b: #ffff00;          // 
-        --chart_line_color_c: #ff9000;          // 
-        --chart_line_color_d: #ff0000;          // 
-        --chart_line_color_e: #f000ff;          // 
-        --chart_line_color_f: #0000ff;          // 
-        --chart_line_color_g: #00ffff;          // 
+        --chart_grid_color: #ffffff;            // сетка у графиков
+        --chart_signature_font_color: #000000;  // цвет текста в квадратиках
     }
 }

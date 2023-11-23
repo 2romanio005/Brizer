@@ -42,7 +42,12 @@ main {
             }
         }
         .ct-label{
-            background-color: white
+            color: var(--text_color);
+        }
+        // $ct-grid-color: var(--text_color);
+        // $ct-grid-background-fill: var(--text_color);
+        .ct-grid{
+            stroke: var(--chart_grid_color);
         }
 
         ol {
@@ -50,10 +55,8 @@ main {
             padding: 10px 0;
             display: flex;
             justify-content: space-evenly;
-
-            // color: var(--background_color);
-            color: #000000; // FIXME
-
+            // background-color: pink;
+            color: var(--chart_signature_font_color); 
             li {
                 width: var(--font-size);
                 height: var(--font-size);
