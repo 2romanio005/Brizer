@@ -6,12 +6,12 @@ import { dataField } from "./dataField.js";
 {
 
 function updateData() {
-    console.log("1111111111111111111111111111111111111111111111", allDataField);
+    //console.log("1111111111111111111111111111111111111111111111", allDataField);
     // загрузка полей с данными
     uploadHTML("http://" + activeHost + "/Content/Main/LoadingData/data.txt")
-        .then(updateData)
+        .then(successUpdateData)
         .catch((error) => console.warn("FAILED:", "http://" + activeHost + "/Content/Main/LoadingData/data.txt", error));
-    function updateData(responseText) {
+    function successUpdateData(responseText) {
         let splittedResponseText = responseText.split(';');
         console.log("splittedResponseText", splittedResponseText);
         for (let i = 0; i < allDataField.length; i++) {

@@ -139,14 +139,13 @@ function uploadPageWithHistoryPush(nameContent, hostData) {
 
         // если не изменилась основа, но изменился источник данных
     } else if (MainURL.searchParams.get(paramHost) != hostData) {
+        // переподгрузить данные
         MainURL.searchParams.set(paramHost, hostData);
         console.log("to", MainURL.href);         // LOG
         window.history.pushState({ page: "" }, "", MainURL.href);
         console.log("Added new history", window.history.length);    // LOG
         console.log("eventUpdateData in uploadPageWithHistoryPush()");
         window.dispatchEvent(eventUpdateData);
-        //updateData();       // переподгзить данные
-        // FIXME
     }
 }
 
