@@ -1,12 +1,15 @@
 export class dataField{
     constructor(field_id){
-            this.#field = document.getElementById(field_id);
+            //this.#field = document.getElementById(field_id);
+            this.#field_id = field_id;
             this.data = "null";
     }
 
     set data(data){
+        //console.log("dataField_old", this.#data);       // LOG
         this.#data = data;
-        this.#field.innerHTML = this.#data;
+        document.getElementById(this.#field_id).innerHTML = this.#data;
+        //console.log("dataField", this.#data);       // LOG
     }
 
     get data(){
@@ -14,5 +17,5 @@ export class dataField{
     }
 
     #data;      // значение в поле
-    #field;     // HTMLElement объект
+    #field_id;     // HTMLElement объект
 }
