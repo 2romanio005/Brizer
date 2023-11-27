@@ -84,8 +84,8 @@ function uploadPage(allUrls) {
     console.log("uploadPage:", allUrls);
     let nam = 0;
     function everythingIsLoaded() {
-        if (nam++ == allUrls.length) {
-            console.log("eventUpdateData");
+        if (++nam == allUrls.length) {
+            console.log("eventUpdateData in uploadPage()");
             window.dispatchEvent(eventUpdateData);
         }
     }
@@ -108,7 +108,6 @@ function uploadPage(allUrls) {
             console.log("Start loading HTML form", url);        // LOG
             uploadHTML(url)
                 .then((responseText) => {
-                    everythingIsLoaded();
                     contentBody.innerHTML = responseText;
                     console.log(nam, "uploadHTML()", url, "- OK");
                     everythingIsLoaded();
@@ -140,6 +139,11 @@ function uploadPageWithHistoryPush(nameContent, hostData) {
 
         // если не изменилась основа, но изменился источник данных
     } else if (MainURL.searchParams.get(paramHost) != hostData) {
+        MainURL.searchParams.set(paramHost, hostData);
+        console.log("to", MainURL.href);         // LOG
+        window.history.pushState({ page: "" }, "", MainURL.href);
+        console.log("Added new history", window.history.length);    // LOG
+        console.log("eventUpdateData in uploadPageWithHistoryPush()");
         window.dispatchEvent(eventUpdateData);
         //updateData();       // переподгзить данные
         // FIXME

@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Бризер Borey</title>
+    <!-- <title>Бризер Borey</title> -->
 
     <!-- <link rel="stylesheet" href="../General/general.css"> -->
     <link rel="stylesheet" href="./Content/Main/main.css">
 
-    <link rel="stylesheet" href="./Content/Main/chartist/chartist.min.css"> 	
-</head> 
+    <link rel="stylesheet" href="./Content/Main/chartist/chartist.min.css">
+</head>
 
 <body>
     <header>
-        <h1>Бризер Borey</h1>
+        <h1 id="header">Бризер Borey</h1>
     </header>
 
     <hr>
@@ -63,8 +63,7 @@
         <span>Цена за текущий месяц: <span id="RUB_naw_mon"></span> ₽.</span>
         <span>Цена за прошлый месяц: <span id="RUB_before_mon"></span> ₽.</span>
 
-        <div class="ct-chart" id="RUB_chart"></div>
-                <div class="chart">
+        <div class="chart">
             <div class="ct-chart" id="RUB_chart"></div>
             <ol>
                 <li class="chart_signature_a" id="RUB_chart_signature_a">1</li>
@@ -79,11 +78,11 @@
 
     </main>
 
-    <hr>
+    <!-- <hr>
     <nav>
-        <a href="#">Найтройки</a>
+        <a href="Settings" onclick="uploadPageWithHistoryPush(nameContentSettings, hostBorey); return false;">Настройки бризера Borey</a>
     </nav>
-    <hr>
+    <hr> -->
 
     <!-- <script src="./Content/Main/chartist/chartist.min.js" async="true"></script>
     <script src="./Content/Main/main.js" async="true"></script> -->

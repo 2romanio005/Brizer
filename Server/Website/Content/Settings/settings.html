@@ -5,23 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Настройки Бризера Borey</title>
+    <title id="title">Настройки Бризера Borey</title>
 
-    <!-- <link rel="stylesheet" href="../General/general.css"> -->
     <link rel="stylesheet" href="./Content/Settings/settings.css">
 </head>
 
 <body>
     <header>
-        <h1>Настройки Бризера Borey</h1>
+        <h1 id="header">Настройки Бризера Borey</h1>
     </header>
 
     <hr>
-    <nav>
+    <!-- <nav>
         <a>Бризер Borey</a>
     </nav>
     <hr>
-    <br>
+    <br> -->
     <main>
         <form action="#">
             <fieldset>
@@ -48,14 +47,12 @@
                         <td><label for="celsius_NORM">°C.</label></td>
                     </tr>
                     <tr>
-                        <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка
-                            не успевает нагреть воздух:</td>
+                        <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка не успевает нагреть воздух:</td>
                         <td><input type="text" value="null" size="1" id="check_temp"></td>
                         <td><label for="check_temp">мин.</label></td>
                     </tr>
                     <tr>
-                        <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и
-                                комнатной:</label></td>
+                        <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и комнатной:</label></td>
                         <td><input type="text" value="null" size="1" id="update_celsius_NORM"></td>
                         <td><label for="update_celsius_NORM">мин.</label></td>
                     </tr>
@@ -87,6 +84,7 @@
                 </table>
                 <div class="screen_gorizont_center">
                     <input type="password" placeholder="password" size="4%" id="password">
+                    <!-- autocomplete="current-password" -->
                 </div>
             </fieldset>
             <div class="screen_gorizont_center">
@@ -96,7 +94,7 @@
         <hr>
         <form action="#">
             <fieldset>
-                <select id="day">
+                <select id="changeable_chart">
                     <option value="-1">все графики</option>
                     <option value="1">Углекислый газ</option>
                     <option value="2">Температура</option>
@@ -128,7 +126,7 @@
             </div>
         </form>
     </main>
-    <script src="./Content/Settings/settings.js" async="true"></script>
+    <!-- <script src="./Content/Settings/settings.js" async="true"></script> -->
 </body>
 
 </html
