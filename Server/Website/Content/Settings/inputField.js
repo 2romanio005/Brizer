@@ -1,7 +1,7 @@
 export class inputField {
     constructor(FieldId, forbiddenExpressions = "") {
         this.#FieldId = FieldId;
-        this.#oldData = "null";
+        this.oldData = "null";
         this.data = "null";
 
         const this_FieldId = eval(FieldId);
@@ -15,14 +15,21 @@ export class inputField {
         }
     }
 
+    set oldData(oldData){
+        this.#oldData = oldData;
+    }
+
     updateData(resultColor){
         if(this.isChanged){
             this.#oldData = this.data;;
             document.getElementById(this.#FieldId).style.color = resultColor;
+        }else{
+            document.getElementById(this.#FieldId).style.color = "var(--font_color)";
         }
     }
 
     set data(data) {
+        //console.log(this.#FieldId, this.#oldData, this.data);
         if (!this.isChanged) {     // значит данные не были изменены человеком, то можно их обновить с сервера
             document.getElementById(this.#FieldId).value = data;
         }

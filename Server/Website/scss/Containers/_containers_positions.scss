@@ -1,11 +1,11 @@
-$heder_height: calc($h2-font-size + 8px);
+$heder_height: calc($h3-font-size + 8px);
 
 
 #contentBody{
     // position: absolute;
     // left: calc($heder_height + 1px);
     // width: calc(100% - 2 *  ($heder_height + 1px));
-    padding: 0 calc($heder_height + 1px);
+    padding: 0 calc($heder_height + 5px);
 }
 
 nav {
@@ -38,9 +38,9 @@ nav {
     display: flex;
     flex-shrink: 0;
 
-    h2 {
+    h3 {
         writing-mode: vertical-rl;
-        padding: 10px 0px; // 10px 0px 10px 5px;
+        padding: 10px 1px; // 10px 0px 10px 5px;
         //padding: 10px 0px 10px 0px;
         //width: $h2-font-size;
     }
@@ -67,7 +67,7 @@ nav {
     transform: translateX(calc($heder_height - 100%));
     z-index: 99;
 
-    h2 {
+    h3 {
         transform: rotate(180deg);
     }
 }

@@ -10,20 +10,32 @@
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        --background_color: #000000;            // фон
-        --hr_color: #c2c2c2;                    // полоска(hr)
+        --background_color: #111111;            // фон
+
+        --h1_header_color: #00ff00;             // цвет заголовок
+        --h2_header_color: #37b680;             // цвет подзаголовков
+        --h3_header_color: #f0f0f0;             // совсем малелькие подзаголовки
+
+        --font_color: #f0f0f0;                  // текст
         
-        --header_color: #00ff00;                // заголовок
-        --button_background_color: #00ff00;     // фон кнопки
-        --button_border_color: #008000;         // краешек кнопок
+
+        --slider_start_color: #00ee00;          // цвет начала градиента слайдера
+        --slider_finish_color: #007700;         // цвет конца градиента слайдера
+
+        --hr_color: #677075;                    // полоска(hr)
+        --border_color: #677075;                // увет рамочки  для полей ввода
+        
+        --button_background_color: #008800;     // фон кнопки
+        --button_border_color: #00bb00;         // краешек кнопок
+        --button_font_color: #f0f0f0;           // цвет текста кнопки
+
 
         --successColor: #00ff00;                // цвет успеха   для полей ввода и паролей
         --errorColor: #ff0000;                  // цвет ошибки   для полей ввода и паролей
         --waitingColor: #ffff00;                // цвет ожидания для полей ввода и паролей
 
-        --font_color: #ffffff;                  // текст
 
-
+        
         --chart_line_color_a: #00ff00;          // первая полоса графика
         --chart_line_color_b: #ffff00;          // вторая полоса графика
         --chart_line_color_c: #ff9000;          // третья полоса графика

@@ -10,8 +10,6 @@ import { inputField } from "./inputField.js";
         console.log("Active hostData:", activeHost);
         if (activeHost != hostData) {
             activeHost = hostData;
-            // document.getElementById("form_main_submit").action = MainUrl;
-            // document.getElementById("form_memory_submit").action = MainUrl;
             console.log("New hostData:", activeHost);
         }
 
@@ -61,11 +59,11 @@ import { inputField } from "./inputField.js";
     }
 
     function sendDataMain() {
-        let dataToSend = "";
+        let dataToSend = "password=" + document.getElementById("password").value;
         for (const inputField of mainInputField) {
             dataToSend += inputField.generateDataToSend();
         }
-        dataToSend = dataToSend.slice(1);
+        //dataToSend = dataToSend.slice(1);
 
         document.getElementById("password").style.background = "var(--waitingColor)";               // включить цвет ожиданий
         sendPostData("http://" + activeHost + "/Content/Settings/SendedData/main.txt", dataToSend)
@@ -105,14 +103,14 @@ import { inputField } from "./inputField.js";
         new inputField("time_no_nite", /\D+/),
         new inputField("on_display", /\D+/),
     ];
-    const passwordInputField = new inputField("password");
+    //const passwordInputField = new inputField("password");
 
     const MemoryInputField = [
         // new inputField("CO2_no_good", /\D+/),
         // new inputField("on_vent", /\D+/),
         // new inputField("vent", /\D+/),
     ];
-    const memoryInputField = new inputField("memory_password");
+    //const memoryInputField = new inputField("memory_password");
 
 
     updateData();
@@ -123,6 +121,9 @@ import { inputField } from "./inputField.js";
             let MainUrl = new URL(window.location.href);
             if (MainUrl.searchParams.get(paramNameContent) === nameContentSettings) {     // если сейчас загружена страница Settings
                 console.log("used updateData Settings");   // LOG
+                for (const inputField of mainInputField){
+                    inputField.oldData = "null";
+                }
                 updateData();
             }
         },

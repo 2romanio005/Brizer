@@ -1,4 +1,4 @@
-$border_radius: var(--font-size);
+$border_radius: $font-size;
 
 
 body {
@@ -13,13 +13,16 @@ nav {
 }
 
 .nav_container {
-    background-color: red;
-    //background-color: blue;
+    // background-color: #98c538;
+    //background-color: #0a8282;
+    //background-color: #6b0016;
 
     //border-radius: $border_radius;
-    h2 {
-        background-color: blue;
-        border-radius: $border_radius 0 0 $border_radius;
+    h3 {
+       // background-color: black;
+       //background-color: #6b0016;
+       background-color: #008800;
+       border-radius: $border_radius 0 0 $border_radius;
     }
 }
 

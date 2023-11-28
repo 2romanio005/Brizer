@@ -16,12 +16,9 @@
     </header>
 
     <hr>
-    <!-- <nav>
-        <a>Бризер Borey</a>
-    </nav>
-    <hr>
-    <br> -->
+
     <main>
+        <h2>Основные настройки</h2>
         <table>
             <tr>
                 <td><label for="CO2_no_good">Уровень приемлемого CO<sub>2</sub> в комнате:</label></td>
@@ -29,8 +26,7 @@
                 <td><label for="CO2_no_good">ppm.</label></td>
             </tr>
             <tr>
-                <td><label for="on_vent">Время проветривания при привышении заданого CO<sub>2</sub>:</label>
-                </td>
+                <td><label for="on_vent">Время проветривания при привышении заданого CO<sub>2</sub>:</label></td>
                 <td><input type="text" autocomplete="off" value="null" size="1" id="on_vent"></td>
                 <td><label for="on_vent">мин.</label></td>
             </tr>
@@ -91,31 +87,56 @@
             <button type="button" id="main_submit">Соханить насройки</button>
         </div>
 
-        <hr>
+        <!-- <hr> -->
+        <br>
 
-        <select id="changeable_chart">
-            <option value="0">Углекислый газ</option>
-            <option value="1">Температура</option>
-            <option value="2">Затраты</option>
-            <option value="3">Температуры и затрат</option>
-        </select>
-        <select id="month">
-            <option value="-1">все месяца</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-        </select>
-        <select id="day">
-            <option value="-1">все дни</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
-        <input type="number" placeholder="value">
-
+        <h2>Изменение графиков</h2>
+        <table>
+            <tr>
+                <td><label for="changeable_chart">Изменяемый график:</label></td>
+                <td>
+                    <select id="changeable_chart">
+                        <option value="0">Углекислый газ</option>
+                        <option value="1">Температура</option>
+                        <option value="2">Затраты</option>
+                        <option value="3">Температуры и затрат</option>
+                    </select>
+                </td>
+                <!-- <td><label for="changeable_chart"></label></td> -->
+            </tr>
+            <tr>
+                <td><label for="changeable_month">Изменяемый месяц:</label></td>
+                <td>
+                    <select id="changeable_month">
+                        <option value="-1">все месяца</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </td>
+                <!-- <td><label for="changeable_chart"></label></td> -->
+            </tr>
+            <tr>
+                <td><label for="changeable_day">Изменяемый день или час:</label></td>
+                <td>
+                    <select id="changeable_day">
+                        <option value="-1">все дни</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </td>
+                <!-- <td><label for="changeable_chart"></label></td> -->
+            </tr>
+            <tr>
+                <td><label for="new_number_on_chart">Записываемое значение:</label></td>
+                <td><input type="text" autocomplete="off" value="11111"  size="1" id="new_number_on_chart"></td>
+                <!-- <td><label for="changeable_chart"></label></td> -->
+            </tr>
+        </table>
         <div class="screen_gorizont_center">
             <input type="password" autocomplete="off" placeholder="memory password" size="13%" id="memory_password">
         </div>
