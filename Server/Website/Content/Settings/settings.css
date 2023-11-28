@@ -1,22 +1,20 @@
-fieldset {
-  border: none;
-}
-fieldset table {
+table {
   border-collapse: collapse;
 }
-fieldset table tr {
+table tr {
   border: 1px solid var(--separation_border_color);
 }
-fieldset table tr td {
+table tr td {
   width: 100%;
   max-width: 100%;
 }
-fieldset table tr td input {
+table tr td input {
   background-color: var(--background_color);
   color: var(--font_color);
   border: 1px solid var(--separation_border_color);
 }
-fieldset input[type=password] {
+
+input[type=password] {
   background: var(--waitingColor);
 }
 

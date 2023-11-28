@@ -1,34 +1,32 @@
-fieldset {
-    border: none;
+table {
+    border-collapse: collapse;
 
-    table {
-        border-collapse: collapse;
+    tr {
+        border: 1px solid var(--separation_border_color);
 
-        tr {
-            border: 1px solid var(--separation_border_color);
+        td {
+            //border-bottom: 1px solid var(--separation_border_color);
 
-            td {
-                //border-bottom: 1px solid var(--separation_border_color);
+            width: 100%;
+            max-width: 100%;
 
-                width: 100%;
-                max-width: 100%;
-
-                //background-color: red;
-                input {
-                    //padding: 2px;
-                    background-color: var(--background_color);
-                    color: var(--font_color);
-                    border: 1px solid var(--separation_border_color);
-                }
+            //background-color: red;
+            input {
+                //padding: 2px;
+                background-color: var(--background_color);
+                color: var(--font_color);
+                border: 1px solid var(--separation_border_color);
             }
         }
     }
-    input[type="password"]{
-        background: var(--waitingColor);
-    }
 }
 
-.screen_gorizont_center{
+input[type="password"] {
+    background: var(--waitingColor);
+}
+
+
+.screen_gorizont_center {
     width: 100%;
     display: flex;
     justify-content: center;

@@ -1,22 +1,29 @@
 export class inputField {
-    constructor(FieldId, forbiddenExpressions) {
+    constructor(FieldId, forbiddenExpressions = "") {
         this.#FieldId = FieldId;
-        this.data = "null";
         this.#oldData = "null";
+        this.data = "null";
 
         const this_FieldId = eval(FieldId);
         this_FieldId.onkeyup = () => {
             this_FieldId.value = this_FieldId.value.replace(forbiddenExpressions, '');
             if(this.isChanged){
-                document.getElementById(this.#FieldId).style.color = "var(--waitingColor)"
+                document.getElementById(this.#FieldId).style.color = "var(--waitingColor)";
             }else{
-                document.getElementById(this.#FieldId).style.color = "var(--font_color)"
+                document.getElementById(this.#FieldId).style.color = "var(--font_color)";
             }
         }
     }
 
+    updateData(resultColor){
+        if(this.isChanged){
+            this.#oldData = this.data;;
+            document.getElementById(this.#FieldId).style.color = resultColor;
+        }
+    }
+
     set data(data) {
-        if (!this.isChanged) {     // значит данные не были изменены после seta, то можно их обновить с сервера
+        if (!this.isChanged) {     // значит данные не были изменены человеком, то можно их обновить с сервера
             document.getElementById(this.#FieldId).value = data;
         }
         this.#oldData = data;
@@ -26,14 +33,17 @@ export class inputField {
         return document.getElementById(this.#FieldId).value;
     }
 
-    get oldData() {
-        return this.#oldData;       // FIXME
-    }
+    // get oldData() {
+    //     return this.#oldData;       // FIXME
+    // }
 
     get isChanged() {
-        return this.oldData != this.data;
+        return this.#oldData != this.data;
     }
 
+    generateDataToSend(){
+        return '&' + this.#FieldId + '=' + this.data;
+    }
 
     #oldData;           // данные, подгруженные с бризера
     #FieldId;           // HTMLElement объект

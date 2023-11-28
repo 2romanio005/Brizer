@@ -18,22 +18,20 @@ function uploadHTML(url) {
         let http = createRequestObject();
 
         if (!http) {
-            console.log("failed createRequestObject() at uploadHTML from" + url)
+            console.log("failed createRequestObject() at uploadHTML from" + url);       // FIXME
+            reject("failed createRequestObject() at uploadHTML from" + url);
         }
 
-        http.open('GET', url, true);
+        http.open("GET", url, true);
         http.onreadystatechange = function () {
             if (http.readyState == 4) {
                 if (http.status == 200) {
-                    resolve(http.responseText);      // подставить контент загруженой страницы
+                    resolve(http.responseText);      // вернуть контент загруженой страницы
                 }
                 reject(http.status);
             }
-        }
+        };
         http.send(null);
-        // } catch (err) {
-        //     reject(err);
-        // }
     });
 }
 

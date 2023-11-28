@@ -22,112 +22,106 @@
     <hr>
     <br> -->
     <main>
-        <form id="form_main_submit">
-            <fieldset>
-                <table>
-                    <tr>
-                        <td><label for="CO2_no_good">Уровень приемлемого CO<sub>2</sub> в комнате:</label></td>
-                        <td><input type="text" value="null" size="1" id="CO2_no_good"></td>
-                        <td><label for="CO2_no_good">ppm.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="on_vent">Время проветривания при привышении заданого CO<sub>2</sub>:</label>
-                        </td>
-                        <td><input type="text" value="null" size="1" id="on_vent"></td>
-                        <td><label for="on_vent">мин.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="vent">Принудительно включить/выключить вентилятор:</label></td>
-                        <td><input type="text" value="null" size="1" id="vent"></td>
-                        <td><label for="vent">мин.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="celsius_NORM">Желаемая температура в помещение:</label></td>
-                        <td><input type="text" value="null" size="1" id="celsius_NORM"></td>
-                        <td><label for="celsius_NORM">°C.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка
-                            не успевает нагреть воздух:</td>
-                        <td><input type="text" value="null" size="1" id="check_temp"></td>
-                        <td><label for="check_temp">мин.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и
-                                комнатной:</label></td>
-                        <td><input type="text" value="null" size="1" id="update_celsius_NORM"></td>
-                        <td><label for="update_celsius_NORM">мин.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="CO2_out_people">Уровень CO<sub>2</sub> отсутствия человека в помещение:</label>
-                        </td>
-                        <td><input type="text" value="null" size="1" id="CO2_out_people"></td>
-                        <td><label for="CO2_out_people">ppm.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="time_out_people">Время проверки на отсутствие человека в помещение:</label></td>
-                        <td><input type="text" value="null" size="1" id="time_out_people"></td>
-                        <td><label for="time_out_people">мин.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="time_nite">Время начала ночного режима вентилятора:</label></td>
-                        <td><input type="text" value="null" size="1" id="time_nite"></td>
-                        <td><label for="time_nite">часов.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="time_no_nite">Время конца ночного режима вентилятора:</label></td>
-                        <td><input type="text" value="null" size="1" id="time_no_nite"></td>
-                        <td><label for="time_no_nite">часов.</label></td>
-                    </tr>
-                    <tr>
-                        <td><label for="on_display">Время перехода дисплея в спящий режим:</label></td>
-                        <td><input type="text" value="null" size="1" id="on_display"></td>
-                        <td><label for="on_display">сек.</label></td>
-                    </tr>
-                </table>
-                <div class="screen_gorizont_center">
-                    <input type="password" placeholder="password" size="5%" id="password">
-                    <!-- autocomplete="current-password" -->
-                </div>
-            </fieldset>
-            <div class="screen_gorizont_center">
-                <button type="submit" formmethod="post" id="main_submit">Соханить насройки</button>
-            </div>
-        </form>
-        <hr>
-        <form id="form_memory_submit">
-            <fieldset>
-                <select id="changeable_chart">
-                    <option value="-1">все графики</option>
-                    <option value="1">Углекислый газ</option>
-                    <option value="2">Температура</option>
-                    <option value="3">Затраты</option>
-                </select>
-                <select id="month">
-                    <option value="-1">все месяца</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </select>
-                <select id="day">
-                    <option value="-1">все дни</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-                <input type="number" placeholder="value">
+        <table>
+            <tr>
+                <td><label for="CO2_no_good">Уровень приемлемого CO<sub>2</sub> в комнате:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="CO2_no_good"></td>
+                <td><label for="CO2_no_good">ppm.</label></td>
+            </tr>
+            <tr>
+                <td><label for="on_vent">Время проветривания при привышении заданого CO<sub>2</sub>:</label>
+                </td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="on_vent"></td>
+                <td><label for="on_vent">мин.</label></td>
+            </tr>
+            <tr>
+                <td><label for="vent">Принудительно включить/выключить вентилятор:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="vent"></td>
+                <td><label for="vent">мин.</label></td>
+            </tr>
+            <tr>
+                <td><label for="celsius_NORM">Желаемая температура в помещение:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="celsius_NORM"></td>
+                <td><label for="celsius_NORM">°C.</label></td>
+            </tr>
+            <tr>
+                <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка
+                    не успевает нагреть воздух:</td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="check_temp"></td>
+                <td><label for="check_temp">мин.</label></td>
+            </tr>
+            <tr>
+                <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и
+                        комнатной:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="update_celsius_NORM"></td>
+                <td><label for="update_celsius_NORM">мин.</label></td>
+            </tr>
+            <tr>
+                <td><label for="CO2_out_people">Уровень CO<sub>2</sub> отсутствия человека в помещение:</label>
+                </td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="CO2_out_people"></td>
+                <td><label for="CO2_out_people">ppm.</label></td>
+            </tr>
+            <tr>
+                <td><label for="time_out_people">Время проверки на отсутствие человека в помещение:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="time_out_people"></td>
+                <td><label for="time_out_people">мин.</label></td>
+            </tr>
+            <tr>
+                <td><label for="time_nite">Время начала ночного режима вентилятора:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="time_nite"></td>
+                <td><label for="time_nite">часов.</label></td>
+            </tr>
+            <tr>
+                <td><label for="time_no_nite">Время конца ночного режима вентилятора:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="time_no_nite"></td>
+                <td><label for="time_no_nite">часов.</label></td>
+            </tr>
+            <tr>
+                <td><label for="on_display">Время перехода дисплея в спящий режим:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="on_display"></td>
+                <td><label for="on_display">сек.</label></td>
+            </tr>
+        </table>
+        <div class="screen_gorizont_center">
+            <input type="password" autocomplete="off" placeholder="password" size="5%" id="password">
+            <!-- autocomplete="current-password" -->
+        </div>
+        <div class="screen_gorizont_center">
+            <button type="button" id="main_submit">Соханить насройки</button>
+        </div>
 
-                <div class="screen_gorizont_center">
-                    <input type="password" placeholder="memory password" size="13%" id="memory_password">
-                </div>
-            </fieldset>
-            <div class="screen_gorizont_center">
-                <button type="submit" formmethod="post" id="memory_submit">Изменить график</button>
-            </div>
-        </form>
+        <hr>
+
+        <select id="changeable_chart">
+            <option value="0">Углекислый газ</option>
+            <option value="1">Температура</option>
+            <option value="2">Затраты</option>
+            <option value="3">Температуры и затрат</option>
+        </select>
+        <select id="month">
+            <option value="-1">все месяца</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+        <select id="day">
+            <option value="-1">все дни</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+        <input type="number" placeholder="value">
+
+        <div class="screen_gorizont_center">
+            <input type="password" autocomplete="off" placeholder="memory password" size="13%" id="memory_password">
+        </div>
+        <div class="screen_gorizont_center">
+            <button type="button" id="memory_submit">Изменить график</button>
+        </div>
     </main>
 </body>
 

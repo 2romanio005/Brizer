@@ -10,8 +10,8 @@ import { inputField } from "./inputField.js";
         console.log("Active hostData:", activeHost);
         if (activeHost != hostData) {
             activeHost = hostData;
-            document.getElementById("form_main_submit").action = MainUrl;
-            document.getElementById("form_memory_submit").action = MainUrl;
+            // document.getElementById("form_main_submit").action = MainUrl;
+            // document.getElementById("form_memory_submit").action = MainUrl;
             console.log("New hostData:", activeHost);
         }
 
@@ -22,10 +22,67 @@ import { inputField } from "./inputField.js";
         function successUpdateData(responseText) {
             let splittedResponseText = responseText.split(';');
             console.log("splittedResponseText", splittedResponseText);
-            for (let i = 0; i < allInputField.length; i++) {
-                allInputField[i].data = splittedResponseText[i];
+
+            let i = 0;
+            headerDataField.data = splittedResponseText[i++];
+
+            for (const inputField of mainInputField) {
+                inputField.data = splittedResponseText[i++];
+            }
+
+            // const MemoryInputField = [
+            // new inputField("CO2_no_good", /\D+/),
+            // new inputField("on_vent", /\D+/),
+            // new inputField("vent", /\D+/),
+            // ];
+        }
+    }
+
+    function sendPostData(url, dataToSend) {
+        return new Promise(function (resolve, reject) {
+            let http = createRequestObject();
+
+            if (!http) {
+                console.log("failed createRequestObject() at sendPostData from" + url);     // FIXME
+                reject("failed createRequestObject() at sendPostData from" + url);
+            }
+
+            http.open("POST", url, true);
+            http.setRequestHeader("Content-Type", "text/plain");
+            http.onload = () => {
+                if (http.status == 200) {
+                    resolve(http.responseText);         // вернуть ответ сервера
+                } else {
+                    reject(http.status);
+                }
+            };
+            http.send(dataToSend);
+        });
+    }
+
+    function sendDataMain() {
+        let dataToSend = "";
+        for (const inputField of mainInputField) {
+            dataToSend += inputField.generateDataToSend();
+        }
+        dataToSend = dataToSend.slice(1);
+
+        document.getElementById("password").style.background = "var(--waitingColor)";               // включить цвет ожиданий
+        sendPostData("http://" + activeHost + "/Content/Settings/SendedData/main.txt", dataToSend)
+            .then(successSendData)
+            .catch((error) => { console.warn("FAILED:", "http://" + activeHost + "/Content/Settings/SendedData/main.txt", error); successSendData("0"); });
+        function successSendData(responseText) {
+            let resultColor = (responseText === "1" ? "var(--successColor)" : "var(--errorColor)")
+            document.getElementById("password").style.background = resultColor;       // изменения приняты/откланены
+            for (const inputField of mainInputField) {
+                inputField.updateData(resultColor);
             }
         }
+    }
+
+    function sendDataMemory() {
+
+        sendPostData("http://" + activeHost + "/Content/Settings/SendedData/memory", dataToSend);
     }
 
 
@@ -33,8 +90,9 @@ import { inputField } from "./inputField.js";
     let activeHost = "";
 
     // Поля с данными
-    const allInputField = [
-        new dataField(["header", "title"]),
+    const headerDataField = new dataField(["header", "title"]);
+
+    const mainInputField = [
         new inputField("CO2_no_good", /\D+/),
         new inputField("on_vent", /\D+/),
         new inputField("vent", /\D+/),
@@ -47,6 +105,14 @@ import { inputField } from "./inputField.js";
         new inputField("time_no_nite", /\D+/),
         new inputField("on_display", /\D+/),
     ];
+    const passwordInputField = new inputField("password");
+
+    const MemoryInputField = [
+        // new inputField("CO2_no_good", /\D+/),
+        // new inputField("on_vent", /\D+/),
+        // new inputField("vent", /\D+/),
+    ];
+    const memoryInputField = new inputField("memory_password");
 
 
     updateData();
@@ -62,6 +128,9 @@ import { inputField } from "./inputField.js";
         },
         false,
     );
+
+    main_submit.onclick = sendDataMain;
+
 
     //main_submit.onclick = main_submit
 }
