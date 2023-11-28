@@ -17,7 +17,7 @@ fieldset table tr td input {
   border: 1px solid var(--separation_border_color);
 }
 fieldset input[type=password] {
-  background: #ffff00;
+  background: var(--waitingColor);
 }
 
 .screen_gorizont_center {

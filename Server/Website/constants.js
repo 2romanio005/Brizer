@@ -15,9 +15,9 @@ const nameContentSettings = "Settings";
 
 const AllPagesPaths = 
 {
-    "":["/Content/Directing/index.html"],
-    [nameContentDirecting]:["/Content/Directing/index.html"],
-    [nameContentMain]:["/Content/Main/main.html", "/Content/Main/main.js", "/Content/Main/myChartist.js", "/Content/Main/dataField.js"],
-    [nameContentSettings]:["/Content/Settings/settings.html", "/Content/Main/dataField.js", "/Content/Settings/settings.js"],
+    "":["/Content/Directing/directing.html"],
+    [nameContentDirecting]:["/Content/Directing/directing.html"],
+    [nameContentMain]:["/Content/Main/main.html", "/Content/Main/main.js", "/Content/Main/myChartist.js", "/Content/dataField.js"],
+    [nameContentSettings]:["/Content/Settings/settings.html", "/Content/dataField.js", "/Content/Settings/settings.js"],
 }
 console.log(AllPagesPaths);

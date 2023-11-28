@@ -24,7 +24,7 @@ fieldset {
         }
     }
     input[type="password"]{
-        background: #ffff00;
+        background: var(--waitingColor);
     }
 }
 

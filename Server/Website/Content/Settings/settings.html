@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title id="title">Настройки Бризера Borey</title>
+    <title id="title">Настройки Бризера</title>
 
     <link rel="stylesheet" href="./Content/Settings/settings.css">
 </head>
 
 <body>
     <header>
-        <h1 id="header">Настройки Бризера Borey</h1>
+        <h1 id="header">Настройки Бризера</h1>
     </header>
 
     <hr>
@@ -22,7 +22,7 @@
     <hr>
     <br> -->
     <main>
-        <form action="#">
+        <form id="form_main_submit">
             <fieldset>
                 <table>
                     <tr>
@@ -47,17 +47,20 @@
                         <td><label for="celsius_NORM">°C.</label></td>
                     </tr>
                     <tr>
-                        <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка не успевает нагреть воздух:</td>
+                        <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка
+                            не успевает нагреть воздух:</td>
                         <td><input type="text" value="null" size="1" id="check_temp"></td>
                         <td><label for="check_temp">мин.</label></td>
                     </tr>
                     <tr>
-                        <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и комнатной:</label></td>
+                        <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и
+                                комнатной:</label></td>
                         <td><input type="text" value="null" size="1" id="update_celsius_NORM"></td>
                         <td><label for="update_celsius_NORM">мин.</label></td>
                     </tr>
                     <tr>
-                        <td><label for="CO2_out_people">Уровень CO2 отсутствия человека в помещение:</label></td>
+                        <td><label for="CO2_out_people">Уровень CO<sub>2</sub> отсутствия человека в помещение:</label>
+                        </td>
                         <td><input type="text" value="null" size="1" id="CO2_out_people"></td>
                         <td><label for="CO2_out_people">ppm.</label></td>
                     </tr>
@@ -83,16 +86,16 @@
                     </tr>
                 </table>
                 <div class="screen_gorizont_center">
-                    <input type="password" placeholder="password" size="4%" id="password">
+                    <input type="password" placeholder="password" size="5%" id="password">
                     <!-- autocomplete="current-password" -->
                 </div>
             </fieldset>
             <div class="screen_gorizont_center">
-                <button type="submit" id="main_submit">Соханить насройки</button>
+                <button type="submit" formmethod="post" id="main_submit">Соханить насройки</button>
             </div>
         </form>
         <hr>
-        <form action="#">
+        <form id="form_memory_submit">
             <fieldset>
                 <select id="changeable_chart">
                     <option value="-1">все графики</option>
@@ -118,15 +121,14 @@
                 <input type="number" placeholder="value">
 
                 <div class="screen_gorizont_center">
-                    <input type="password" placeholder="memory password" size="12%" id="memory_password">
+                    <input type="password" placeholder="memory password" size="13%" id="memory_password">
                 </div>
             </fieldset>
             <div class="screen_gorizont_center">
-                <button type="submit" id="memory_submit">Изменить график</button>
+                <button type="submit" formmethod="post" id="memory_submit">Изменить график</button>
             </div>
         </form>
     </main>
-    <!-- <script src="./Content/Settings/settings.js" async="true"></script> -->
 </body>
 
 </html

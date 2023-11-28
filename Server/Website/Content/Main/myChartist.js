@@ -40,7 +40,6 @@ export class myChartist {
         // console.log(visible_number);             // LOG
 
 
-        // FIXME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ошибка была тут TypeError: Cannot read properties of null (reading 'style')
         // спрятать или показать лишние квадратики
         for (let visible = 0; visible < visible_number; ++visible) {
             document.getElementById(this.#chart_id + '_signature_' + String.fromCharCode('a'.charCodeAt() + visible)).style.display = "block";

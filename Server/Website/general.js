@@ -42,7 +42,7 @@ function uploadJS(url, type) {
     return new Promise(function (resolve, reject) {
         let script = document.createElement('script');
         script.src = url;
-        script.async = false;  // FIXME надо?
+        script.async = false;
         script.type = type;
         document.head.appendChild(script);
         resolve();
@@ -91,7 +91,7 @@ function uploadPage(allUrls) {
     }
     for (const url of allUrls) {
         // utl = MainURL.origin + utl;
-        if (url[url.length - 1] == 's') {     // FIXME нормальная проверка на js или html
+        if (url[url.length - 1] == 's') {     // TODO нормальная проверка на js или html
             // загрузка JS 
             console.log("Start loading JS form", url);          // LOG
             uploadJS(url, "module")
@@ -230,7 +230,6 @@ window.addEventListener('popstate', (e) => {
     let MainURLParams = new URL(window.location.href).searchParams;
     uploadPageWithHistoryReplace(MainURLParams.get(paramNameContent), MainURLParams.get(paramHost));
 }, false);
-// FIXME
 
 
 
