@@ -1,10 +1,25 @@
 @import "./charts";
+$margin_between_li: 10px;       // реальное пространство в два раза больше
+
 main{
-    span{
-        margin-right: 50px;
-        white-space: nowrap;
-        span{
-            margin-right: 0px;;
+    ol {
+        list-style-type: none;
+
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        
+        margin: 12px -$margin_between_li;
+
+        li {
+            margin: 0px $margin_between_li;
+            
+            text-align: center;
+            box-align: center;
+            span{
+                display: inline-block;
+                margin-right: 0px;
+            }
         }
     }
 }

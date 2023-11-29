@@ -1,3 +1,6 @@
+//@import "/scss/variables";
+@import "../../../scss/variables";
+
 // $chart_line_colors: (
 //     ('a', var(--chart_line_color_a))
 //     ('b', var(--chart_line_color_b))
@@ -20,47 +23,59 @@ $charts_characters: (
 main {
     .chart {
         .ct-chart {
-            text-align: center;
+            height: 350px;
+            margin-left: calc(2.5 * $little-font-size - 50px);
+            //text-align: center;
         }
 
-        @each $ch in $charts_characters {
-            .ct-series-#{$ch} {             // данные графика (линии и точки)          
+        //width: auto;
 
-                .ct-line {          // линии на грфиках
+        @each $ch in $charts_characters {
+            .ct-series-#{$ch} {
+                // данные графика (линии и точки)          
+
+                .ct-line {
+                    // линии на грфиках
                     stroke: var(--chart_line_color_#{$ch});
                     stroke-width: 3px;
                 }
-                
-                .ct-point{          // точки на грфиках
+
+                .ct-point {
+                    // точки на грфиках
                     stroke: var(--chart_line_color_#{$ch});
                     stroke-width: 7px;
                 }
             }
 
-            ol .chart_signature_#{$ch} {    // квадаратики под графиком
+            ol .chart_signature_#{$ch} {
+                // квадаратики под графиком
                 background-color: var(--chart_line_color_#{$ch});
             }
         }
-        .ct-label{
-            color: var(--text_color);
+
+        .ct-label {
+            color: var(--text_color);     
+            font-size: $little-font-size;
         }
+
         // $ct-grid-color: var(--text_color);
         // $ct-grid-background-fill: var(--text_color);
-        .ct-grid{
+        .ct-grid {
             stroke: var(--chart_grid_color);
         }
 
         ol {
             list-style-type: none;
-            padding: 10px 0;
             display: flex;
             justify-content: space-evenly;
-            // background-color: pink;
-            color: var(--chart_signature_font_color); 
+            flex-wrap: wrap;
+            color: var(--chart_signature_font_color);
+
             li {
-                width: var(--font-size);
-                height: var(--font-size);
-                text-align: center;
+                font-size: $main-font-size;
+                margin: 0px 10px 4px;
+                padding: 0px 5px;
+                box-align: center;
             }
         }
     }

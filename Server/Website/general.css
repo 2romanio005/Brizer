@@ -8,7 +8,7 @@
     --h1_header_color: #00ff00;
     --h2_header_color: #37b680;
     --h3_header_color: #f0f0f0;
-    --font_color: #f0f0f0;
+    --font_color: #c8ebdb;
     --slider_start_color: #00ee00;
     --slider_finish_color: #007700;
     --hr_color: #677075;
@@ -31,7 +31,7 @@
   }
 }
 :root {
-  --font-size: 20px;
+  --font-size: 4vmin;
 }
 
 * {
@@ -52,6 +52,11 @@ nav ul {
   background-color: #008800;
   border-radius: var(--font-size) 0 0 var(--font-size);
 }
+.nav_container:hover h3 {
+  background-color: rgba(0, 136, 0, 0);
+  color: rgba(255, 255, 255, 0);
+  transition: background-color 300ms;
+}
 
 .nav_left {
   border-radius: 0 var(--font-size) var(--font-size) 0;
@@ -62,7 +67,7 @@ nav ul {
 }
 
 #contentBody {
-  padding: 0 calc(5 * var(--font-size) / 4 + 8px + 5px);
+  padding: 0px calc(1.25 * var(--font-size) + 2px + 3px + 6px) 0px calc(1.25 * var(--font-size) + 2px + 3px);
 }
 
 nav {
@@ -90,6 +95,7 @@ nav ul li {
 }
 .nav_container:hover {
   transform: translateX(0%);
+  transition: transform 500ms cubic-bezier(0.13, 0.72, 0.82, 1);
 }
 
 .screen_vertical_center {
@@ -104,7 +110,7 @@ nav ul li {
 }
 
 .nav_left {
-  transform: translateX(calc(5 * var(--font-size) / 4 + 8px - 100%));
+  transform: translateX(calc(1.25 * var(--font-size) + 2px - 100%));
   z-index: 99;
 }
 .nav_left h3 {
@@ -112,7 +118,7 @@ nav ul li {
 }
 
 .nav_right {
-  transform: translateX(calc(100% - (5 * var(--font-size) / 4 + 8px)));
+  transform: translateX(calc(100% - (1.25 * var(--font-size) + 2px)));
   right: 0px;
 }
 
@@ -127,19 +133,19 @@ hr {
 h1 {
   text-align: center;
   color: var(--h1_header_color);
-  font-size: calc(2 * var(--font-size));
+  font-size: calc(2.5 * var(--font-size));
 }
 
 h2 {
   text-align: center;
   color: var(--h2_header_color);
-  font-size: calc(3 * var(--font-size) / 2);
+  font-size: calc(1.7 * var(--font-size));
 }
 
 h3 {
   text-align: center;
   color: var(--h3_header_color);
-  font-size: calc(5 * var(--font-size) / 4);
+  font-size: calc(1.25 * var(--font-size));
 }
 
 button,
@@ -154,7 +160,7 @@ a {
 }
 
 .slider::-webkit-scrollbar {
-  width: 15px;
+  width: calc(var(--font-size) / 2);
 }
 
 .slider::-webkit-scrollbar-track {
@@ -172,6 +178,10 @@ input[type=button],
 a {
   padding: 5px 10px;
   margin: 3px 0px;
+}
+
+h2 {
+  margin-top: 7px;
 }
 
 /*

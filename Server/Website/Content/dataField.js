@@ -2,13 +2,16 @@ export class dataField {
     constructor(allFieldId) {
         //this.#field = document.getElementById(field_id);
         this.#allFieldId = allFieldId;
-        this.data = "null";
+        //this.data = "null";       // FIXME
+        this.#data = "null"
+
+        console.log("Created dataField", this.#allFieldId);
     }
 
     set data(data) {
         //console.log("dataField_old", this.#data);       // LOG
         this.#data = data;
-        if(data === undefined){
+        if (data === undefined) {
             this.#data = "null";
         }
         for (const fieldId of this.#allFieldId) {

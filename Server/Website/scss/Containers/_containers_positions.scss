@@ -1,11 +1,12 @@
-$heder_height: calc($h3-font-size + 8px);
+$some_mode_height: 2px;
+$heder_height: calc($h3-font-size + $some_mode_height);   // ширина это штуки справа и слева
 
 
 #contentBody{
     // position: absolute;
     // left: calc($heder_height + 1px);
     // width: calc(100% - 2 *  ($heder_height + 1px));
-    padding: 0 calc($heder_height + 5px);
+    padding: 0px calc($heder_height + 3px + $some_mode_height * 3) 0px calc($heder_height + 3px);
 }
 
 nav {
@@ -46,9 +47,13 @@ nav {
     }
 
     &:hover {
+        //animation: move 1000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) 1;
         transform: translateX(0%);
+        transition: transform 500ms cubic-bezier(.13,.72,.82,1)
     }
 }
+
+
 
 .screen_vertical_center {
     pointer-events: none;
@@ -62,7 +67,6 @@ nav {
     flex-shrink: 0;
 }
 
-
 .nav_left {
     transform: translateX(calc($heder_height - 100%));
     z-index: 99;
@@ -74,8 +78,8 @@ nav {
 
 .nav_right {
     transform: translateX(calc(100% - $heder_height));
-    right: 0px;
-    // h2{
-    //     //transform: rotate(180deg);
+    right: 0px;//$some_mode_height * 3;
+    // h3{
+    //     transform: rotate(180deg);
     // }
 }

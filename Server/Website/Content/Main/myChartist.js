@@ -1,15 +1,19 @@
 export class myChartist {
-    constructor(chart_id, labels_start, labels_len, pathname, divisor = 1) {
+    constructor(chart_id, labels_start, labels_len, pathname, signature = [], divisor = 1) {
         this.#chart_id = chart_id;
 
         for (let i = 0; i < labels_len; i++) {
             this.#data.labels.push(String(labels_start + i));
         }
 
-        this.url = new URL("http://1.1.1.1:1");  // создание каконибудь URL он будет заменён на paramHost
+        this.url = new URL("http://1.1.1.1:1");  // создание какой-нибудь URL он будет заменён на paramHost
         this.url.pathname = pathname;
 
         this.#divisor = divisor;
+
+        for (let i = 0; i < signature.length; ++i) {
+            document.getElementById(this.#chart_id + '_signature_' + String.fromCharCode('a'.charCodeAt() + i)).innerText = signature[i];
+        }
 
         console.log("Created myChartist:",          // LOG
             "\nid -", this.#chart_id,
@@ -38,7 +42,6 @@ export class myChartist {
             --visible_number;
         }
         // console.log(visible_number);             // LOG
-
 
         // спрятать или показать лишние квадратики
         for (let visible = 0; visible < visible_number; ++visible) {

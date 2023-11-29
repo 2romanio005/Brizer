@@ -1,12 +1,12 @@
 @import "./colors";
 
 :root{
-    --font-size: 20px;
+    --font-size: 4vmin;
 }
 
-$font-size: var(--font-size);
-$h1-font-size: calc(2 * $font-size);
-$h2-font-size: calc(3 * $font-size / 2);
-$h3-font-size: calc(5 * $font-size / 4);
+$main-font-size: var(--font-size);
+$h1-font-size: calc(2.5 * $main-font-size);
+$h2-font-size: calc(1.7 * $main-font-size);
+$h3-font-size: calc(1.25 * $main-font-size);
 
-
+$little-font-size: calc(0.55 * $main-font-size);

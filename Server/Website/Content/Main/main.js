@@ -43,7 +43,7 @@ import { dataField } from "../dataField.js";
             }
         }
     }
- 
+
 
     // активный host с данными
     let activeHost = "";
@@ -61,12 +61,52 @@ import { dataField } from "../dataField.js";
         new dataField(["RUB_before_mon"]),
         new dataField(["RUB_day"]),
     ];
-    
+
+    let displayedDays = [];
+    let displayedMonths = [];
+    {
+
+        const allDaysOfWeek =
+            [
+                "воскресенье",
+                "понедельник",
+                "вторник",
+                "среда",
+                "четверг",
+                "пятница",
+                "суббота",
+            ]
+
+        const allMonth =
+            [
+                "Январь",
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Сентябрь",
+                "Октябрь",
+                "Ноябрь",
+                "Декабрь",
+            ]
+        //new Date(Date.now() - 86400000); // that is: 24 * 60 * 60 * 1000
+        //(new Date.setDate(date.getDate() - i)).getDate()
+        let date = new Date();
+        for (let i = 0; i < 7; ++i) {
+            let iDaysAgo = new Date(date.valueOf() - i * 24 * 60 * 60 * 1000);
+            displayedDays.push(String(iDaysAgo.getDate()) + ' ' + String(allDaysOfWeek[iDaysAgo.getDay()]));
+            displayedMonths.push(allMonth[(date.getMonth() - i + 12) % 12]);
+        }
+        console.log(displayedDays);
+    }
     // Графики
     const allChartists = [
-        new myChartist("CO2_chart", 0, 24, "/Content/Main/LoadingData/CO2.txt"),
-        new myChartist("TEMP_chart", 0, 31, "/Content/Main/LoadingData/TEMP_chart.txt", 100),
-        new myChartist("RUB_chart", 0, 31, "/Content/Main/LoadingData/RUB_chart.txt", 100),
+        new myChartist("CO2_chart", 0, 24, "/Content/Main/LoadingData/CO2.txt", displayedDays),
+        new myChartist("TEMP_chart", 1, 31, "/Content/Main/LoadingData/TEMP_chart.txt", displayedMonths, 100),
+        new myChartist("RUB_chart", 1, 31, "/Content/Main/LoadingData/RUB_chart.txt", displayedMonths, 100),
     ];
 
     updateData();
