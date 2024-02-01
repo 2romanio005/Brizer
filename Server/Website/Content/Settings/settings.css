@@ -1,3 +1,35 @@
+:root {
+  --background_color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background_color: #111111;
+    --h1_header_color: #00ff00;
+    --h2_header_color: #37b680;
+    --h3_header_color: #f0f0f0;
+    --font_color: #c8ebdb;
+    --slider_start_color: #00ee00;
+    --slider_finish_color: #007700;
+    --hr_color: #677075;
+    --border_color: #677075;
+    --button_background_color: #008800;
+    --button_border_color: #00bb00;
+    --button_font_color: #f0f0f0;
+    --successColor: #00ff00;
+    --errorColor: #ff0000;
+    --waitingColor: #ffff00;
+    --chart_line_color_a: #00ff00;
+    --chart_line_color_b: #ffff00;
+    --chart_line_color_c: #ff9000;
+    --chart_line_color_d: #ff0000;
+    --chart_line_color_e: #f000ff;
+    --chart_line_color_f: #0000ff;
+    --chart_line_color_g: #00ffff;
+    --chart_grid_color: #ffffff;
+    --chart_signature_font_color: #000000;
+  }
+}
 table {
   border-collapse: collapse;
 }
@@ -15,6 +47,38 @@ table tr td input {
   background-color: var(--background_color);
   color: var(--font_color);
   border: 1px solid var(--border_color);
+}
+
+option {
+  text-align: center;
+}
+
+#changeable_month option[value="1"] {
+  color: var(--chart_line_color_a);
+}
+
+#changeable_month option[value="2"] {
+  color: var(--chart_line_color_b);
+}
+
+#changeable_month option[value="3"] {
+  color: var(--chart_line_color_c);
+}
+
+#changeable_month option[value="4"] {
+  color: var(--chart_line_color_d);
+}
+
+#changeable_month option[value="5"] {
+  color: var(--chart_line_color_e);
+}
+
+#changeable_month option[value="6"] {
+  color: var(--chart_line_color_f);
+}
+
+#changeable_month option[value="7"] {
+  color: var(--chart_line_color_g);
 }
 
 input[type=password] {

@@ -38,7 +38,7 @@ import { dataField } from "../dataField.js";
 
             function updateChart(responseText) {
                 chart.parseData(responseText);
-                chart.redraw();
+                chart.redraw(); 
                 // console.log("LOADED: ", responseText, "from", chart.url.href);        // LOG
             }
         }
@@ -109,14 +109,14 @@ import { dataField } from "../dataField.js";
         new myChartist("RUB_chart", 1, 31, "/Content/Main/LoadingData/RUB_chart.txt", displayedMonths, 100),
     ];
 
-    updateData();
+    updateData(); // загрузка данных при первой подгрузке этого js
 
-    window.addEventListener(
+    window.addEventListener(     // загрузка данных при последующих обрашениях к этому js
         "updateData",
         (e) => {
             let MainUrl = new URL(window.location.href);
             if (MainUrl.searchParams.get(paramNameContent) === nameContentMain) {     // если сейчас загружена страница Main
-                console.log("used updateData Main");   // LOG
+                console.log("used event updateData Main");   // LOG
                 updateData();
             }
         },

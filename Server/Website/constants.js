@@ -20,3 +20,4 @@ const AllPagesPaths =
     [nameContentMain]:["/Content/Main/main.html", "/Content/Main/main.js", "/Content/Main/myChartist.js", "/Content/dataField.js"],
     [nameContentSettings]:["/Content/Settings/settings.html", "/Content/dataField.js", "/Content/Settings/settings.js"],
 }
+ 

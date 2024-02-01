@@ -126,7 +126,7 @@ function uploadPageWithHistoryPush(nameContent, hostData) {
     console.log("Start updating page from", MainURL.href);          // LOG
     // проверка что изменился html 
     if (MainURL.searchParams.get(paramNameContent) != nameContent) {
-        // поменять URL фдресс на новый с записью в историю
+        // поменять URL адресс на новый с записью в историю
         MainURL.searchParams.set(paramNameContent, nameContent);
         MainURL.searchParams.set(paramHost, hostData);
         console.log("to", MainURL.href);         // LOG
@@ -137,7 +137,7 @@ function uploadPageWithHistoryPush(nameContent, hostData) {
 
         // если не изменилась основа, но изменился источник данных
     } else if (MainURL.searchParams.get(paramHost) != hostData) {
-        // переподгрузить данные
+        // переподгрузить данные с нового источника
         MainURL.searchParams.set(paramHost, hostData);
         console.log("to", MainURL.href);         // LOG
         window.history.pushState({ page: "" }, "", MainURL.href);
@@ -147,7 +147,7 @@ function uploadPageWithHistoryPush(nameContent, hostData) {
     }
 }
 
-// обновление страницы без изменения истории (при переходе на страницу стрелочкой, перезагрузке, и в самом начале)
+// обновление страницы без изменения истории (при переходе на страницу стрелочкой назад/вперёд, перезагрузке, и в самом начале)
 function uploadPageWithHistoryReplace(nameContent, hostData) {
     let MainURL = new URL(window.location.href);
     console.log("\n\n=============================================================================================\n\n\n")   // LOG
@@ -163,7 +163,7 @@ function uploadPageWithHistoryReplace(nameContent, hostData) {
 
 
 
-
+{
 // // подгрузить основную часть страницы
 // function uploadContent(nameContent, hostData, changeHistory) {
 //     console.log("==============================================")
@@ -203,7 +203,7 @@ function uploadPageWithHistoryReplace(nameContent, hostData) {
 //             .catch((error) => console.warn(error));
 //     }
 // }
-
+}
 
 // загрузка содержимого при открытии или перезагрузке страницы
 {

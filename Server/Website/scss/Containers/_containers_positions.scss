@@ -6,7 +6,7 @@ $heder_height: calc($h3-font-size + $some_mode_height);   // ширина это
     // position: absolute;
     // left: calc($heder_height + 1px);
     // width: calc(100% - 2 *  ($heder_height + 1px));
-    padding: 0px calc($heder_height + 3px + $some_mode_height * 3) 0px calc($heder_height + 3px);
+    padding: 0px calc($heder_height + 3px + $some_mode_height * 3) 30vh calc($heder_height + 3px);
 }
 
 nav {

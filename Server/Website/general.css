@@ -67,7 +67,7 @@ nav ul {
 }
 
 #contentBody {
-  padding: 0px calc(1.25 * var(--font-size) + 2px + 3px + 6px) 0px calc(1.25 * var(--font-size) + 2px + 3px);
+  padding: 0px calc(1.25 * var(--font-size) + 2px + 3px + 6px) 30vh calc(1.25 * var(--font-size) + 2px + 3px);
 }
 
 nav {
