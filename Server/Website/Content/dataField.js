@@ -10,14 +10,15 @@ export class dataField {
 
     set data(data) {
         //console.log("dataField_old", this.#data);       // LOG
-        this.#data = data;
         if (data === undefined) {
             this.#data = "null";
+        }else{
+            this.#data = data;
         }
         for (const fieldId of this.#allFieldId) {
             document.getElementById(fieldId).innerHTML = this.#data;
         }
-        //console.log("dataField", this.#data);       // LOG
+        console.log("New data in dataField", this.#allFieldId, this.#data);       // LOG
     }
 
     get data() {

@@ -14,9 +14,10 @@ import { inputField } from "./inputField.js";
         }
 
         // загрузка полей с данными
-        uploadHTML("http://" + activeHost + "/Content/Settings/LoadingData/data.txt")
+        uploadHTML("http://" + activeHost + AllDataPaths[nameDataSettings])
+        //uploadHTML("http://" + activeHost + "/load_settings")
             .then(successUpdateData)
-            .catch((error) => console.warn("FAILED:", "http://" + activeHost + "/Content/Settings/LoadingData/data.txt", error));
+            .catch((error) => console.warn("FAILED:", "http://" + activeHost + AllDataPaths[nameDataSettings], error));
         function successUpdateData(responseText) {
             let splittedResponseText = responseText.split(';');
             console.log("splittedResponseText", splittedResponseText);

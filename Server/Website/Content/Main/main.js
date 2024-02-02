@@ -19,9 +19,9 @@ import { dataField } from "../dataField.js";
         // console.log("1111111111111111111111111111111111111111111111", allDataField);
 
         // загрузка полей с данными
-        uploadHTML("http://" + activeHost + "/Content/Main/LoadingData/data.txt")
+        uploadHTML("http://" + activeHost + AllDataPaths[nameDataMain])
             .then(successUpdateData)
-            .catch((error) => console.warn("FAILED:", "http://" + activeHost + "/Content/Main/LoadingData/data.txt", error));
+            .catch((error) => console.warn("FAILED:", "http://" + activeHost + AllDataPaths[nameDataMain], error));
         function successUpdateData(responseText) {
             let splittedResponseText = responseText.split(';');
             console.log("splittedResponseText", splittedResponseText);
@@ -38,7 +38,7 @@ import { dataField } from "../dataField.js";
 
             function updateChart(responseText) {
                 chart.parseData(responseText);
-                chart.redraw(); 
+                chart.redraw();
                 // console.log("LOADED: ", responseText, "from", chart.url.href);        // LOG
             }
         }
@@ -104,9 +104,9 @@ import { dataField } from "../dataField.js";
     }
     // Графики
     const allChartists = [
-        new myChartist("CO2_chart", 0, 24, "/Content/Main/LoadingData/CO2.txt", displayedDays),
-        new myChartist("TEMP_chart", 1, 31, "/Content/Main/LoadingData/TEMP_chart.txt", displayedMonths, 100),
-        new myChartist("RUB_chart", 1, 31, "/Content/Main/LoadingData/RUB_chart.txt", displayedMonths, 100),
+        new myChartist("CO2_chart", 0, 24, AllDataPaths[nameDataCO2], displayedDays),
+        new myChartist("TEMP_chart", 1, 31, AllDataPaths[nameDataTempChart], displayedMonths, 100),
+        new myChartist("RUB_chart", 1, 31, AllDataPaths[nameDataRubChart], displayedMonths, 100),
     ];
 
     updateData(); // загрузка данных при первой подгрузке этого js

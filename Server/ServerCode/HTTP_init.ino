@@ -1,24 +1,38 @@
 
 void HTTP_init(void) {
-  HTTP.on("/load_data", HTTP_GET, []() {
+//  HTTP.on("/options")
+//options "/greet" do |env|
+//  # Allow `POST /greet`...
+//  env.response.headers["Access-Control-Allow-Methods"] = "POST"
+//  # ...with `Content-type` header in the request...
+//  env.response.headers["Access-Control-Allow-Headers"] = "Content-type"
+//  # ...from https://www.google.com origin.
+//  env.response.headers["Access-Control-Allow-Origin"] = "https://www.google.com"
+  
+  HTTP.on("/Content/Main/LoadingData/MainData", HTTP_GET, []() {
+    HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
     HTTP.send(200, "text/plain", sensors);
-//    Serial.println('!');
   });
-  HTTP.on("/load_data_CO2", HTTP_GET, []() {
+  HTTP.on("/Content/Main/LoadingData/CO2", HTTP_GET, []() {
+    HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
+    Serial.print("CO2!");
     HTTP.send(200, "text/plain", graf_CO2);
   });
-  HTTP.on("/load_data_TEMP", HTTP_GET, []() {
+  HTTP.on("/Content/Main/LoadingData/TempChart", HTTP_GET, []() {
+    HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
     HTTP.send(200, "text/plain", graf_TEMP);
   });
-  HTTP.on("/load_data_RUB", HTTP_GET, []() {
+  HTTP.on("/Content/Main/LoadingData/RubChart", HTTP_GET, []() {
+    HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
     HTTP.send(200, "text/plain", graf_RUB);
   });
-  HTTP.on("/load_settings", HTTP_GET, []() {
+  HTTP.on("/Content/Settings/LoadingData/SettingsData", HTTP_GET, []() {
+    HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
     HTTP.send(200, "text/plain", settings);
   });
   
   HTTP.on("/save", HTTP_GET, []() {              // Получаем изменения настроек с веб сайта
-
+    HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
     void (*foo_tmp)(String tmp) = [](String tmp){
 //      Serial.print(tmp);
 //      Serial.print(';');
@@ -77,13 +91,14 @@ void HTTP_init(void) {
 //  HTTP.on("/restart", HTTP_GET, []() {
 //    String restart = HTTP.arg("device");          // Получаем значение device из запроса
 //    if (restart == "ok") {                         // Если значение равно Ок
-//      HTTP.send(200, "text / plain", "Reset OK"); // Oтправляем ответ Reset OK
+//      HTTP.send(200, "text / plain", "Reset OK"); // Отправляем ответ Reset OK
 //      ESP.restart();                                // перезагружаем модуль
 //    }
 //    else {                                        // иначе
-//      HTTP.send(200, "text / plain", "No Reset"); // Oтправляем ответ No Reset
+//      HTTP.send(200, "text / plain", "No Reset"); // Отправляем ответ No Reset
 //    }
 //  });
+
   // Добавляем функцию Update для перезаписи прошивки по WiFi при 1М(256K SPIFFS) и выше
 //  httpUpdater.setup(&HTTP);
   // Запускаем HTTP сервер

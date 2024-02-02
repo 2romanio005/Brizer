@@ -6,7 +6,7 @@ void WIFIinit() {
     WiFi.begin();
   }
   else {
-    WiFi.begin(_ssid.c_str(), _password.c_str());
+    WiFi.begin(_ssid, _password);
   }
   // Делаем проверку подключения до тех пор пока не подключится
   while (WiFi.status() != WL_CONNECTED) 

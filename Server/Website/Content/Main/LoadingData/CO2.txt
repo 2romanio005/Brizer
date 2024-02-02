@@ -1,1 +1,0 @@
-600,696,667,664,684,666,681,632,541,507,491,498,515,500,400,442,440,449,null,null,null,null,null,null;461,524,538,552,530,507,485,427,400,400,400,400,400,400,400,400,400,400,424,458,561,677,644,726;null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,669,578;

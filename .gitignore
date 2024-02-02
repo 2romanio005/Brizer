@@ -6,3 +6,5 @@ Server/Website/.tmp/
 Server/Website/Content/Main/chartist/
 !Server/Website/Content/Main/chartist/chartist.min.js
 !Server/Website/Content/Main/chartist/chartist.min.css
+
+Server/ServerCode/data/
