@@ -8,7 +8,7 @@ const eventUpdateData = new Event("updateData");
 const hostRoman = "94.242.44.182:56567";
 const hostBorey = "94.242.44.182:56568";
 const hostTest = "127.0.0.1:3000";
-const hostTestCROS = "192.168.1.144:80";
+const hostTestCORS = "192.168.1.144:80";
 
 const nameContentDirecting = "Directing";
 const nameContentMain = "Main";
@@ -23,17 +23,41 @@ const AllPagesPaths =
 }
 
 
-const nameDataCO2 = "CO2";
-const nameDataRubChart = "RubChart";
-const nameDataTempChart = "TempChart";
 const nameDataMain = "MainData";
+const nameDataCO2 = "CO2";
+const nameDataTempChart = "TempChart";
+const nameDataRubChart = "RubChart";
 const nameDataSettings = "SettingsData";
 
 const AllDataPaths =
 {
-    [nameDataCO2]: "/Content/Main/LoadingData/CO2",
-    [nameDataRubChart]: "/Content/Main/LoadingData/RubChart",
-    [nameDataTempChart]: "/Content/Main/LoadingData/TempChart",
-    [nameDataMain]: "/Content/Main/LoadingData/MainData",
-    [nameDataSettings]: "/Content/Settings/LoadingData/SettingsData",
+    [nameDataMain]: "/LoadingData/Main/MainData",
+    [nameDataCO2]: "/LoadingData/Main/CO2",
+    [nameDataTempChart]: "/LoadingData/Main/TempChart",
+    [nameDataRubChart]: "/LoadingData/Main/RubChart",
+    [nameDataSettings]: "/LoadingData/Settings/SettingsData",
 }
+
+const nameSaveMainSettings = "MainSettings";
+const nameSaveMemorySettings = "MemorySettings";
+
+const AllSavePaths =
+{
+    [nameSaveMainSettings]: "/SavingData/Settings/MainSettings",
+    [nameSaveMemorySettings]: "/SavingData/Settings/MemorySettings",
+}
+
+
+// активный host с данными
+let activeHost = "";
+function updateActiveHost() {
+    let mainUrl = new URL(window.location.href);
+    let hostData = mainUrl.searchParams.get(paramHost);
+
+    console.log("Active hostData:", activeHost);
+    if (activeHost != hostData) {
+        activeHost = hostData;
+        console.log("New hostData:", activeHost);
+    }
+}
+

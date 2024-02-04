@@ -1574,7 +1574,7 @@ void loop()  { // ===================================================== VOID LOO
             tmp_foo();
             Serial.print(int(round((P_counter_day * Settings_day_cost.get_value() + P_counter_night * Settings_night_cost.get_value()) / 1000.0)));
 
-            tmp_foo_two();                                                        // данные с датчкиов кончились
+            tmp_foo_two();                                                        // данные с датчиков кончились
 
 
             Serial.print(Settings_CO2_no_good.get_value());
@@ -1667,7 +1667,7 @@ void loop()  { // ===================================================== VOID LOO
             Watchdog.enable(RESET_MODE, WDT_PRESCALER); // Режим сторжевого сброса , таймаут ~1с        (128 = ~1c)
             break;
           }
-        case ';':
+        case ';':    // запись обновления настроек
           {
             switch (value_string_parsing) {
               case 0:
@@ -1726,7 +1726,7 @@ void loop()  { // ===================================================== VOID LOO
           
             break;
           }
-        case '$':
+        case '$':    // запись обновления памяти
           {
             byte tmp = buf_string.indexOf(',');
             int place = (buf_string.substring(1, tmp)).toInt();

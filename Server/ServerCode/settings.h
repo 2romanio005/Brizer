@@ -16,6 +16,10 @@
 uint8_t broadcastAddress[] = {0x8C, 0xAA, 0xB5, 0x1B, 0x16, 0x76}; // MAC-адрес получателя
 
 #define alliedOrigin "http://127.0.0.1:3000"
+#define brizerMainTitle "&#1041&#1088&#1080&#1079&#1077&#1088 &#1056&#1086&#1084&#1072&#1085"
+#define brizerSettingsTitle "&#1041&#1088&#1080&#1079&#1077&#1088 &#1056&#1086&#1084&#1072&#1085"
 #else
 #define alliedOrigin "http://127.0.0.1:3000"
+#define brizerMainTitle "&#1041&#1088&#1080&#1079&#1077&#1088 &#1056&#1086&#1084&#1072&#1085"
+#define brizerSettingsTitle "&#1041&#1088&#1080&#1079&#1077&#1088 &#1056&#1086&#1084&#1072&#1085"
 #endif

@@ -53,31 +53,31 @@ option {
   text-align: center;
 }
 
-#changeable_month option[value="1"] {
+#changeableLine option[value="1"] {
   color: var(--chart_line_color_a);
 }
 
-#changeable_month option[value="2"] {
+#changeableLine option[value="2"] {
   color: var(--chart_line_color_b);
 }
 
-#changeable_month option[value="3"] {
+#changeableLine option[value="3"] {
   color: var(--chart_line_color_c);
 }
 
-#changeable_month option[value="4"] {
+#changeableLine option[value="4"] {
   color: var(--chart_line_color_d);
 }
 
-#changeable_month option[value="5"] {
+#changeableLine option[value="5"] {
   color: var(--chart_line_color_e);
 }
 
-#changeable_month option[value="6"] {
+#changeableLine option[value="6"] {
   color: var(--chart_line_color_f);
 }
 
-#changeable_month option[value="7"] {
+#changeableLine option[value="7"] {
   color: var(--chart_line_color_g);
 }
 

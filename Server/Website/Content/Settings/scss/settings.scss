@@ -46,8 +46,8 @@ option {
 @for $i from 1 through 7 {
 
     //@each $ch in $charts_characters {
-    #changeable_month option[value="#{$i}"] {
-        color: var(--chart_line_color_#{list.nth($charts_characters, $i)});
+    #changeableLine option[value="#{$i}"] {
+        color: var(--chart_line_color_#{list.nth($charts_characters, $i)});   // раскраска цифорок в проле линия
     }
 }
 

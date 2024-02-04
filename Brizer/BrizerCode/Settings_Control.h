@@ -26,7 +26,7 @@ class Settings_Control {
       } else{
         this->value += this->step;
       }
-      update_pair();
+      this->update_pair();
     };
     void change_value_down() {                                             // уменьшить переменную на шаг(step)
       if (this->value <= this->value_min) {
@@ -34,7 +34,7 @@ class Settings_Control {
       } else{
         this->value -= this->step;
       }
-      update_pair();
+      this->update_pair();
     };
 
     /*void set_step(T step){                                               // установить шаг
@@ -43,7 +43,7 @@ class Settings_Control {
     void set_value(T value){                                               // записать значение переменной
       T value_tmp = this->value;
       this->value = constrain(value, value_min, value_max);
-      if(value_tmp != value) update_pair();
+      if(value_tmp != value) this->update_pair();
     };
     T get_value() {                                                        // получить значение переменной
       return this->value;

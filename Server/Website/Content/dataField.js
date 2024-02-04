@@ -5,7 +5,7 @@ export class dataField {
         //this.data = "null";       // FIXME
         this.#data = "null"
 
-        console.log("Created dataField", this.#allFieldId);
+        // console.log("Created dataField", this.#allFieldId);
     }
 
     set data(data) {
@@ -18,7 +18,7 @@ export class dataField {
         for (const fieldId of this.#allFieldId) {
             document.getElementById(fieldId).innerHTML = this.#data;
         }
-        console.log("New data in dataField", this.#allFieldId, this.#data);       // LOG
+        // console.log("New data in dataField", this.#allFieldId, this.#data);       // LOG
     }
 
     get data() {

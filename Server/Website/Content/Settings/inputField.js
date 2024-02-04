@@ -1,59 +1,61 @@
 export class inputField {
-    constructor(FieldId, forbiddenExpressions = "") {
-        this.#FieldId = FieldId;
+    constructor(fieldId, forbiddenExpressions = "", changedColor = "var(--waitingColor)", data = "null") {
+        this.#fieldId = fieldId;
         this.oldData = "null";
-        this.data = "null";
+        this.data = data;
 
-        const this_FieldId = eval(FieldId);
-        this_FieldId.onkeyup = () => {
-            this_FieldId.value = this_FieldId.value.replace(forbiddenExpressions, '');
-            if(this.isChanged){
-                document.getElementById(this.#FieldId).style.color = "var(--waitingColor)";
-            }else{
-                document.getElementById(this.#FieldId).style.color = "var(--font_color)";
-            }
+        const HTML_field = eval(fieldId);
+        HTML_field.onkeyup = () => {
+            HTML_field.value = HTML_field.value.replace(forbiddenExpressions, '');
+            this.setColorIfChanged(changedColor);
+            // console.log("Changed: " + this.#fieldId);
         }
     }
 
-    set oldData(oldData){
-        this.#oldData = oldData;
+    generateDataToSend() {
+        return '&' + this.#fieldId + '=' + this.data;
     }
 
-    updateData(resultColor){
-        if(this.isChanged){
-            this.#oldData = this.data;;
-            document.getElementById(this.#FieldId).style.color = resultColor;
-        }else{
-            document.getElementById(this.#FieldId).style.color = "var(--font_color)";
+    setColorIfChanged(color) {
+        if (this.isChanged) {
+            this.setColor(color);
+        } else {
+            this.setColor("var(--font_color)");
         }
+    }
+
+    setColor(color) {
+        document.getElementById(this.#fieldId).style.color = color;
+    }
+    setColorBackground(color) {
+        document.getElementById(this.#fieldId).style.background = color;
+    }
+
+    resetOldData(){
+        this.#oldData = this.data;
+    }
+    resetData(){
+        document.getElementById(this.#fieldId).value = this.#oldData;
     }
 
     set data(data) {
-        //console.log(this.#FieldId, this.#oldData, this.data);
+        //console.log(this.#fieldId, this.#oldData, this.data);
         if (!this.isChanged) {     // значит данные не были изменены человеком, то можно их обновить с сервера
-            document.getElementById(this.#FieldId).value = data;
+            document.getElementById(this.#fieldId).value = data;
         }
-        this.#oldData = data;
+        this.resetOldData();
     }
 
     get data() {
-        return document.getElementById(this.#FieldId).value;
+        return document.getElementById(this.#fieldId).value;
     }
-
-    // get oldData() {
-    //     return this.#oldData;       // FIXME
-    // }
 
     get isChanged() {
         return this.#oldData != this.data;
     }
 
-    generateDataToSend(){
-        return '&' + this.#FieldId + '=' + this.data;
-    }
-
     #oldData;           // данные, подгруженные с бризера
-    #FieldId;           // HTMLElement объект
+    #fieldId;           // HTMLElement объект
 }
 
 

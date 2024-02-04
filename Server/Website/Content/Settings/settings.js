@@ -3,118 +3,120 @@ import { dataField } from "../dataField.js";
 import { inputField } from "./inputField.js";
 
 {
-    function updateData() {
-        let MainUrl = new URL(window.location.href);
-        let hostData = MainUrl.searchParams.get(paramHost);
-
-        console.log("Active hostData:", activeHost);
-        if (activeHost != hostData) {
-            activeHost = hostData;
-            console.log("New hostData:", activeHost);
-        }
-
+    function updateSettingsData() {
         // загрузка полей с данными
-        uploadHTML("http://" + activeHost + AllDataPaths[nameDataSettings])
-        //uploadHTML("http://" + activeHost + "/load_settings")
+        uploadDataGET("http://" + activeHost + AllDataPaths[nameDataSettings])
             .then(successUpdateData)
-            .catch((error) => console.warn("FAILED:", "http://" + activeHost + AllDataPaths[nameDataSettings], error));
+            .catch(error);
         function successUpdateData(responseText) {
             let splittedResponseText = responseText.split(';');
             console.log("splittedResponseText", splittedResponseText);
 
-            let i = 0;
-            headerDataField.data = splittedResponseText[i++];
+            headerDataField.data = splittedResponseText[0];
 
-            for (const inputField of mainInputField) {
-                inputField.data = splittedResponseText[i++];
+            for (let i = 0; i < allMainInputField.length; i++){
+                allMainInputField[i].data = (i + 1 < splittedResponseText.length) ? splittedResponseText[i + 1] : "null";
             }
+
+            // for (const inputField of mainInputField) {
+            // }
 
             // const MemoryInputField = [
-            // new inputField("CO2_no_good", /\D+/),
-            // new inputField("on_vent", /\D+/),
-            // new inputField("vent", /\D+/),
+            // new inputField("CO2Threshold", /\D+/),
+            // new inputField("airingTime", /\D+/),
+            // new inputField("activeAiringTime", /\D+/),
             // ];
         }
+
+        function error(error) {
+            console.warn("In updateSettingsData(): " + error);
+        }
     }
 
-    function sendPostData(url, dataToSend) {
-        return new Promise(function (resolve, reject) {
-            let http = createRequestObject();
-
-            if (!http) {
-                console.log("failed createRequestObject() at sendPostData from" + url);     // FIXME
-                reject("failed createRequestObject() at sendPostData from" + url);
-            }
-
-            http.open("POST", url, true);
-            http.setRequestHeader("Content-Type", "text/plain");
-            http.onload = () => {
-                if (http.status == 200) {
-                    resolve(http.responseText);         // вернуть ответ сервера
-                } else {
-                    reject(http.status);
-                }
-            };
-            http.send(dataToSend);
-        });
-    }
-
-    function sendDataMain() {
-        let dataToSend = "password=" + document.getElementById("password").value;
-        for (const inputField of mainInputField) {
+    function sendMainData() {
+        let dataToSend = passwordMainInputField.generateDataToSend();
+        for (const inputField of allMainInputField) {
             dataToSend += inputField.generateDataToSend();
         }
-        //dataToSend = dataToSend.slice(1);
+        dataToSend = dataToSend.slice(1);
+        // console.log("sendMainData: " + dataToSend);
 
-        document.getElementById("password").style.background = "var(--waitingColor)";               // включить цвет ожиданий
-        sendPostData("http://" + activeHost + "/Content/Settings/SendedData/main.txt", dataToSend)
+        passwordMainInputField.setColorBackground("var(--waitingColor)");               // включить цвет ожиданий
+        sendDataPOST("http://" + activeHost + AllSavePaths[nameSaveMainSettings], dataToSend)
             .then(successSendData)
-            .catch((error) => { console.warn("FAILED:", "http://" + activeHost + "/Content/Settings/SendedData/main.txt", error); successSendData("0"); });
+            .catch(error);
         function successSendData(responseText) {
-            let resultColor = (responseText === "1" ? "var(--successColor)" : "var(--errorColor)")
-            document.getElementById("password").style.background = resultColor;       // изменения приняты/откланены
-            for (const inputField of mainInputField) {
-                inputField.updateData(resultColor);
+            let result = (responseText === "1");
+            let resultColor = (result ? "var(--successColor)" : "var(--errorColor)");
+            passwordMainInputField.setColorBackground(resultColor);       // изменения приняты/отклонены
+            for (const inputField of allMainInputField) {
+                inputField.setColorIfChanged(resultColor);
+                if(result){
+                    inputField.resetOldData();
+                }
             }
+        }
+
+        function error(error){
+            console.warn("In sendMainData(): " + error); successSendData("0");
         }
     }
 
-    function sendDataMemory() {
+    function sendMemoryData() {
+        let dataToSend = passwordMemoryInputField.generateDataToSend();
+        for (const inputField of allMemoryInputField) {
+            dataToSend += inputField.generateDataToSend();
+        }
+        dataToSend = dataToSend.slice(1);
+        // console.log("sendMemoryData: " + dataToSend);
 
-        sendPostData("http://" + activeHost + "/Content/Settings/SendedData/memory", dataToSend);
+        passwordMemoryInputField.setColorBackground("var(--waitingColor)");               // включить цвет ожиданий
+        sendDataPOST("http://" + activeHost + AllSavePaths[nameSaveMemorySettings], dataToSend)
+            .then(successSendData)
+            .catch(error);
+        function successSendData(responseText) {
+            let result = (responseText === "1");
+            let resultColor = (result ? "var(--successColor)" : "var(--errorColor)");
+            passwordMemoryInputField.setColorBackground(resultColor);                     // изменения приняты/откланены
+            allMemoryInputField[3].setColor(resultColor);                                 // раскрасить только поле со значением элемента
+            if(result){
+                allMemoryInputField[3].resetOldData();
+            }
+        }
+
+        function error(error){
+            console.warn("In sendMemoryData(): " + error); successSendData("0");
+        }
     }
 
-
-    // активный host с данными
-    let activeHost = "";
 
     // Поля с данными
     const headerDataField = new dataField(["header", "title"]);
 
-    const mainInputField = [
-        new inputField("CO2_no_good", /\D+/),
-        new inputField("on_vent", /\D+/),
-        new inputField("vent", /\D+/),
-        new inputField("celsius_NORM", /\.+(?=\.)|[^0-9\.]/),
-        new inputField("check_temp", /\D+/),
-        new inputField("update_celsius_NORM", /\D+/),
-        new inputField("CO2_out_people", /\D+/),
-        new inputField("time_out_people", /\D+/),
-        new inputField("time_nite", /\D+/),
-        new inputField("time_no_nite", /\D+/),
-        new inputField("on_display", /\D+/),
+    const allMainInputField = [
+        new inputField("CO2Threshold", /\D+/),
+        new inputField("airingTime", /\D+/),
+        new inputField("activeAiringTime", /\D+/),
+        new inputField("requiredTemp", /\.+(?=\.)|[^0-9\.]/),
+        new inputField("heaterCheckTime", /\D+/),
+        new inputField("requiredTempUpdateTime", /\D+/),
+        new inputField("CO2HumanAbsence", /\D+/),
+        new inputField("humanAbsenceCheckingTime", /\D+/),
+        new inputField("beginNightTime", /\D+/),
+        new inputField("endNightTime", /\D+/),
+        new inputField("activeDisplayTime", /\D+/),
     ];
-    //const passwordInputField = new inputField("password");
+    const passwordMainInputField = new inputField("mainPassword", /[а-яёА-ЯЁ]+/, "var(--font_color)");
 
-    const MemoryInputField = [
-        // new inputField("CO2_no_good", /\D+/),
-        // new inputField("on_vent", /\D+/),
-        // new inputField("vent", /\D+/),
+    const allMemoryInputField = [
+        new inputField("changeableChart"),
+        new inputField("changeableLine"),
+        new inputField("changeableElem"),
+        new inputField("newValueForChartElem", /\D+/, "var(--waitingColor)", 11111),
     ];
-    //const memoryInputField = new inputField("memory_password");
+    const passwordMemoryInputField = new inputField("memoryPassword", /[а-яёА-ЯЁ]+/, "var(--font_color)");
 
-
-    updateData();
+    updateSettingsData();
 
     window.addEventListener(
         "updateData",
@@ -122,17 +124,18 @@ import { inputField } from "./inputField.js";
             let MainUrl = new URL(window.location.href);
             if (MainUrl.searchParams.get(paramNameContent) === nameContentSettings) {     // если сейчас загружена страница Settings
                 console.log("used updateData Settings");   // LOG
-                for (const inputField of mainInputField){
+                for (const inputField of allMainInputField) {
                     inputField.oldData = "null";
                 }
-                updateData();
+                updateSettingsData();
             }
         },
         false,
     );
 
-    main_submit.onclick = sendDataMain;
 
+    main_settings_submit.onclick = sendMainData;
+    memory_settings_submit.onclick = sendMemoryData;
 
     //main_submit.onclick = main_submit
 }

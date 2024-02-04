@@ -6,8 +6,7 @@ export class myChartist {
             this.#data.labels.push(String(labels_start + i));
         }
 
-        this.url = new URL("http://1.1.1.1:1");  // создание какой-нибудь URL он будет заменён на paramHost
-        this.url.pathname = pathname;
+        this.#pathname = pathname;
 
         this.#divisor = divisor;
 
@@ -15,12 +14,12 @@ export class myChartist {
             document.getElementById(this.#chart_id + '_signature_' + String.fromCharCode('a'.charCodeAt() + i)).innerText = signature[i];
         }
 
-        console.log("Created myChartist:",          // LOG
-            "\nid -", this.#chart_id,
-            "\npath -", this.url.href,
-            "\ndivisor -", this.#divisor,
-            "\nlabels -", this.#data.labels,
-        )
+        // console.log("Created myChartist:",          // LOG
+        //     "\nid -", this.#chart_id,
+        //     "\pathname -", this.#pathname,
+        //     "\ndivisor -", this.#divisor,
+        //     "\nlabels -", this.#data.labels,
+        // )
     }
 
     parseData(responseText) {
@@ -32,7 +31,7 @@ export class myChartist {
                 this.#data.series[i].push(parseInt(point, 10) / this.#divisor);
             }
         }
-        console.log("ParseData", this.#chart_id, this.#data);        // LOG
+        // console.log("ParseData", this.#chart_id, this.#data);        // LOG
     }
 
     redraw() {
@@ -66,8 +65,12 @@ export class myChartist {
         fullWidth: true,
     };
 
+    get pathname() {
+        return this.#pathname;
+    }
+
     #divisor;           // на что делить данные, приходящие с сервера
     #chart_id;          // id графика
 
-    url;                // URL адрс с данными
+    #pathname;          // путь к данными графика
 }

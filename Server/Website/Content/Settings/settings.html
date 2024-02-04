@@ -21,70 +21,70 @@
         <h2>Основные настройки</h2>
         <table>
             <tr>
-                <td><label for="CO2_no_good">Уровень приемлемого CO<sub>2</sub> в комнате:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="CO2_no_good"></td>
-                <td><label for="CO2_no_good">ppm.</label></td>
+                <td><label for="CO2Threshold">Уровень приемлемого CO<sub>2</sub> в комнате:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="CO2Threshold"></td>
+                <td><label for="CO2Threshold">ppm.</label></td>
             </tr>
             <tr>
-                <td><label for="on_vent">Время проветривания при привышении заданого CO<sub>2</sub>:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="on_vent"></td>
-                <td><label for="on_vent">мин.</label></td>
+                <td><label for="airingTime">Время проветривания при привышении заданого CO<sub>2</sub>:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="airingTime"></td>
+                <td><label for="airingTime">мин.</label></td>
             </tr>
             <tr>
-                <td><label for="vent">Принудительно включить/выключить вентилятор:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="vent"></td>
-                <td><label for="vent">мин.</label></td>
+                <td><label for="activeAiringTime">Принудительно включить/выключить вентилятор:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="activeAiringTime"></td>
+                <td><label for="activeAiringTime">мин.</label></td>
             </tr>
             <tr>
-                <td><label for="celsius_NORM">Желаемая температура в помещение:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="celsius_NORM"></td>
-                <td><label for="celsius_NORM">°C.</label></td>
+                <td><label for="requiredTemp">Желаемая температура в помещение:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="requiredTemp"></td>
+                <td><label for="requiredTemp">°C.</label></td>
             </tr>
             <tr>
-                <td><label for="check_temp"></label>Время, через которое выключается проветривание, если печка
+                <td><label for="heaterCheckTime"></label>Время, через которое выключается проветривание, если печка
                     не успевает нагреть воздух:</td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="check_temp"></td>
-                <td><label for="check_temp">мин.</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="heaterCheckTime"></td>
+                <td><label for="heaterCheckTime">мин.</label></td>
             </tr>
             <tr>
-                <td><label for="update_celsius_NORM">Время схождения температур на выходе из бризера и
+                <td><label for="requiredTempUpdateTime">Время схождения температур на выходе из бризера и
                         комнатной:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="update_celsius_NORM"></td>
-                <td><label for="update_celsius_NORM">мин.</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="requiredTempUpdateTime"></td>
+                <td><label for="requiredTempUpdateTime">мин.</label></td>
             </tr>
             <tr>
-                <td><label for="CO2_out_people">Уровень CO<sub>2</sub> отсутствия человека в помещение:</label>
+                <td><label for="CO2HumanAbsence">Уровень CO<sub>2</sub> отсутствия человека в помещение:</label>
                 </td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="CO2_out_people"></td>
-                <td><label for="CO2_out_people">ppm.</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="CO2HumanAbsence"></td>
+                <td><label for="CO2HumanAbsence">ppm.</label></td>
             </tr>
             <tr>
-                <td><label for="time_out_people">Время проверки на отсутствие человека в помещение:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="time_out_people"></td>
-                <td><label for="time_out_people">мин.</label></td>
+                <td><label for="humanAbsenceCheckingTime">Время проверки на отсутствие человека в помещение:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="humanAbsenceCheckingTime"></td>
+                <td><label for="humanAbsenceCheckingTime">мин.</label></td>
             </tr>
             <tr>
-                <td><label for="time_nite">Время начала ночного режима вентилятора:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="time_nite"></td>
-                <td><label for="time_nite">часов.</label></td>
+                <td><label for="beginNightTime">Время начала ночного режима вентилятора:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="beginNightTime"></td>
+                <td><label for="beginNightTime">часов.</label></td>
             </tr>
             <tr>
-                <td><label for="time_no_nite">Время конца ночного режима вентилятора:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="time_no_nite"></td>
-                <td><label for="time_no_nite">часов.</label></td>
+                <td><label for="endNightTime">Время конца ночного режима вентилятора:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="endNightTime"></td>
+                <td><label for="endNightTime">часов.</label></td>
             </tr>
             <tr>
-                <td><label for="on_display">Время перехода дисплея в спящий режим:</label></td>
-                <td><input type="text" autocomplete="off" value="null" size="1" id="on_display"></td>
-                <td><label for="on_display">сек.</label></td>
+                <td><label for="activeDisplayTime">Время перехода дисплея в спящий режим:</label></td>
+                <td><input type="text" autocomplete="off" value="null" size="1" id="activeDisplayTime"></td>
+                <td><label for="activeDisplayTime">сек.</label></td>
             </tr>
         </table>
         <div class="screen_gorizont_center">
-            <input type="password" autocomplete="off" placeholder="password" size="5%" id="password">
+            <input type="password" autocomplete="off" placeholder="password" size="5%" id="mainPassword">
             <!-- autocomplete="current-password" -->
         </div>
         <div class="screen_gorizont_center">
-            <button type="button" id="main_submit">Соханить насройки</button>
+            <button type="button" id="main_settings_submit">Соханить настройки</button>
         </div>
 
         <!-- <hr> -->
@@ -93,21 +93,21 @@
         <h2>Изменение графиков</h2>
         <table>
             <tr>
-                <td><label for="changeable_chart">Изменяемый график:</label></td>
+                <td><label for="changeableChart">Изменяемый график:</label></td>
                 <td>
-                    <select id="changeable_chart">
+                    <select id="changeableChart">
                         <option value="0">Углекислый газ</option>
                         <option value="1">Температура</option>
                         <option value="2">Затраты</option>
                         <!-- <option value="3">Температуры и затрат</option> -->
                     </select>
                 </td>
-                <!-- <td><label for="changeable_chart"></label></td> -->
+                <!-- <td><label for="changeableChart"></label></td> -->
             </tr>
             <tr>
-                <td><label for="changeable_month">Изменяемая кривая:</label></td>
+                <td><label for="changeableLine">Изменяемая кривая:</label></td>
                 <td>
-                    <select id="changeable_month">
+                    <select id="changeableLine">
                         <option value="-1">Все кривые</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -118,30 +118,30 @@
                         <option value="7">7</option>
                     </select>
                 </td>
-                <!-- <td><label for="changeable_chart"></label></td> -->
+                <!-- <td><label for="changeableChart"></label></td> -->
             </tr>
             <tr>
-                <td><label for="changeable_day">Изменяемый элемент:</label></td>
+                <td><label for="changeableElem">Изменяемый элемент:</label></td>
                 <td>
-                    <select id="changeable_day">
+                    <select id="changeableElem">
                         <option value="-1">Все элементы</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                     </select>
                 </td>
-                <!-- <td><label for="changeable_chart"></label></td> -->
+                <!-- <td><label for="changeableChart"></label></td> -->
             </tr>
             <tr>
-                <td><label for="new_number_on_chart">Записываемое значение:</label></td>
-                <td><input type="text" autocomplete="off" value="11111"  size="1" id="new_number_on_chart"></td>
-                <!-- <td><label for="changeable_chart"></label></td> -->
+                <td><label for="newValueForChartElem">Записываемое значение:</label></td>
+                <td><input type="text" autocomplete="off" value="11111" size="1" id="newValueForChartElem"></td>
+                <!-- <td><label for="changeableChart"></label></td> -->
             </tr>
         </table>
         <div class="screen_gorizont_center">
-            <input type="password" autocomplete="off" placeholder="memory password" size="13%" id="memory_password">
+            <input type="password" autocomplete="off" placeholder="memory password" size="13%" id="memoryPassword">
         </div>
         <div class="screen_gorizont_center">
-            <button type="button" id="memory_submit">Изменить график</button>
+            <button type="button" id="memory_settings_submit">Изменить график</button>
         </div>
     </main>
 </body>

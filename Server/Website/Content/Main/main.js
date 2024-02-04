@@ -3,25 +3,12 @@ import { myChartist } from "./myChartist.js";
 import { dataField } from "../dataField.js";
 
 {
-    function updateData() {
-        let MainUrl = new URL(window.location.href);
-        let hostData = MainUrl.searchParams.get(paramHost);
-
-        console.log("Active hostData:", activeHost);
-        if (activeHost != hostData) {
-            activeHost = hostData;
-            console.log("New hostData:", activeHost);
-
-            for (let chart of allChartists) {
-                chart.url.host = activeHost;
-            }
-        }
-        // console.log("1111111111111111111111111111111111111111111111", allDataField);
-
+    function updateMainData() {
+        console.log("http://" + activeHost);
         // загрузка полей с данными
-        uploadHTML("http://" + activeHost + AllDataPaths[nameDataMain])
+        uploadDataGET("http://" + activeHost + AllDataPaths[nameDataMain])
             .then(successUpdateData)
-            .catch((error) => console.warn("FAILED:", "http://" + activeHost + AllDataPaths[nameDataMain], error));
+            .catch(error);
         function successUpdateData(responseText) {
             let splittedResponseText = responseText.split(';');
             console.log("splittedResponseText", splittedResponseText);
@@ -32,21 +19,20 @@ import { dataField } from "../dataField.js";
 
         // загрузка графиков
         for (let chart of allChartists) {
-            uploadHTML(chart.url.href)
-                .then(updateChart)
-                .catch((error) => console.warn("FAILED:", chart.url.href, error));       // LOG
+            uploadDataGET("http://" + activeHost + chart.pathname)
+                .then(successUpdateChart)
+                .catch(error);
 
-            function updateChart(responseText) {
+            function successUpdateChart(responseText) {
                 chart.parseData(responseText);
                 chart.redraw();
-                // console.log("LOADED: ", responseText, "from", chart.url.href);        // LOG
             }
         }
+
+        function error(error){
+            console.warn("In updateMainData(): " + error);
+        }
     }
-
-
-    // активный host с данными
-    let activeHost = "";
 
     // Поля с данными
     const allDataField = [
@@ -62,6 +48,7 @@ import { dataField } from "../dataField.js";
         new dataField(["RUB_day"]),
     ];
 
+    // заполнение подписей к графикам
     let displayedDays = [];
     let displayedMonths = [];
     {
@@ -100,7 +87,7 @@ import { dataField } from "../dataField.js";
             displayedDays.push(String(iDaysAgo.getDate()) + ' ' + String(allDaysOfWeek[iDaysAgo.getDay()]));
             displayedMonths.push(allMonth[(date.getMonth() - i + 12) % 12]);
         }
-        console.log(displayedDays);
+        //console.log(displayedDays);
     }
     // Графики
     const allChartists = [
@@ -109,7 +96,7 @@ import { dataField } from "../dataField.js";
         new myChartist("RUB_chart", 1, 31, AllDataPaths[nameDataRubChart], displayedMonths, 100),
     ];
 
-    updateData(); // загрузка данных при первой подгрузке этого js
+    updateMainData(); // загрузка данных при первой подгрузке этого js
 
     window.addEventListener(     // загрузка данных при последующих обрашениях к этому js
         "updateData",
@@ -117,7 +104,7 @@ import { dataField } from "../dataField.js";
             let MainUrl = new URL(window.location.href);
             if (MainUrl.searchParams.get(paramNameContent) === nameContentMain) {     // если сейчас загружена страница Main
                 console.log("used event updateData Main");   // LOG
-                updateData();
+                updateMainData();
             }
         },
         false,
