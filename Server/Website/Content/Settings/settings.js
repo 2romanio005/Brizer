@@ -3,6 +3,47 @@ import { dataField } from "../dataField.js";
 import { inputField } from "./inputField.js";
 
 {
+    const headerDataField = new dataField(["header", "title"]);         // Поле с названием
+
+    const allMainInputField = [                                         // Изменяемые поля с оновными данными
+        new inputField("CO2Threshold", /\D+/),
+        new inputField("airingTime", /\D+/),
+        new inputField("activeAiringTime", /\D+/),
+        new inputField("requiredTemp", /\.+(?=\.)|[^0-9\.]/),
+        new inputField("heaterCheckTime", /\D+/),
+        new inputField("requiredTempUpdateTime", /\D+/),
+        new inputField("CO2HumanAbsence", /\D+/),
+        new inputField("humanAbsenceCheckingTime", /\D+/),
+        new inputField("beginNightTime", /\D+/),
+        new inputField("endNightTime", /\D+/),
+        new inputField("activeDisplayTime", /\D+/),
+    ];
+    const passwordMainInputField = new inputField("mainPassword", /[а-яёА-ЯЁ]+/, "var(--font_color)");  // Изменяемое поле с паролем для оснонвых данных
+
+    const allMemoryInputField = [                                       // Изменяемое поле данными для измнения графиков
+        new inputField("changeableChart"),
+        new inputField("changeableLine"),
+        new inputField("changeableElem"),
+        new inputField("newValueForChartElem", /[^nul\d]/),
+    ];
+    const passwordMemoryInputField = new inputField("memoryPassword", /[а-яёА-ЯЁ]+/, "var(--font_color)");  // Изменяемое поле с паролем для изменения графиков
+
+
+    function rebindAtHTMLObjects() {
+        for (const field of allMainInputField) {
+            field.rebind();
+        }
+        passwordMainInputField.rebind();
+
+        for (const field of allMemoryInputField) {
+            field.rebind();
+        }
+        passwordMemoryInputField.rebind();
+
+        main_settings_submit.onclick = sendMainData;        // при нжатии на кнопку сохранить изменение настроек
+        memory_settings_submit.onclick = sendMemoryData;    // при нжатии на кнопку сохранить изменение графиков
+    }
+
     function updateSettingsData() {
         // загрузка полей с данными
         uploadDataGET("http://" + activeHost + AllDataPaths[nameDataSettings])
@@ -14,7 +55,7 @@ import { inputField } from "./inputField.js";
 
             headerDataField.data = splittedResponseText[0];
 
-            for (let i = 0; i < allMainInputField.length; i++){
+            for (let i = 0; i < allMainInputField.length; i++) {
                 allMainInputField[i].data = (i + 1 < splittedResponseText.length) ? splittedResponseText[i + 1] : "null";
             }
 
@@ -32,6 +73,12 @@ import { inputField } from "./inputField.js";
             console.warn("In updateSettingsData(): " + error);
         }
     }
+
+    function firstSettingsUpload() {
+        rebindAtHTMLObjects();
+        updateSettingsData();
+    }
+
 
     function sendMainData() {
         let dataToSend = passwordMainInputField.generateDataToSend();
@@ -51,13 +98,13 @@ import { inputField } from "./inputField.js";
             passwordMainInputField.setColorBackground(resultColor);       // изменения приняты/отклонены
             for (const inputField of allMainInputField) {
                 inputField.setColorIfChanged(resultColor);
-                if(result){
+                if (result) {
                     inputField.resetOldData();
                 }
             }
         }
 
-        function error(error){
+        function error(error) {
             console.warn("In sendMainData(): " + error); successSendData("0");
         }
     }
@@ -79,44 +126,23 @@ import { inputField } from "./inputField.js";
             let resultColor = (result ? "var(--successColor)" : "var(--errorColor)");
             passwordMemoryInputField.setColorBackground(resultColor);                     // изменения приняты/откланены
             allMemoryInputField[3].setColor(resultColor);                                 // раскрасить только поле со значением элемента
-            if(result){
+            if (result) {
                 allMemoryInputField[3].resetOldData();
             }
         }
 
-        function error(error){
+        function error(error) {
             console.warn("In sendMemoryData(): " + error); successSendData("0");
         }
     }
 
 
-    // Поля с данными
-    const headerDataField = new dataField(["header", "title"]);
 
-    const allMainInputField = [
-        new inputField("CO2Threshold", /\D+/),
-        new inputField("airingTime", /\D+/),
-        new inputField("activeAiringTime", /\D+/),
-        new inputField("requiredTemp", /\.+(?=\.)|[^0-9\.]/),
-        new inputField("heaterCheckTime", /\D+/),
-        new inputField("requiredTempUpdateTime", /\D+/),
-        new inputField("CO2HumanAbsence", /\D+/),
-        new inputField("humanAbsenceCheckingTime", /\D+/),
-        new inputField("beginNightTime", /\D+/),
-        new inputField("endNightTime", /\D+/),
-        new inputField("activeDisplayTime", /\D+/),
-    ];
-    const passwordMainInputField = new inputField("mainPassword", /[а-яёА-ЯЁ]+/, "var(--font_color)");
+    if (!flagInPageLoading) {         // загрузка данных при первой подгрузке этого js, если остальные файлы страницы уже загружены
+        firstSettingsUpload();
+    }
 
-    const allMemoryInputField = [
-        new inputField("changeableChart"),
-        new inputField("changeableLine"),
-        new inputField("changeableElem"),
-        new inputField("newValueForChartElem", /\D+/, "var(--waitingColor)", 11111),
-    ];
-    const passwordMemoryInputField = new inputField("memoryPassword", /[а-яёА-ЯЁ]+/, "var(--font_color)");
 
-    updateSettingsData();
 
     window.addEventListener(
         "updateData",
@@ -127,16 +153,10 @@ import { inputField } from "./inputField.js";
                 for (const inputField of allMainInputField) {
                     inputField.oldData = "null";
                 }
-                updateSettingsData();
+                firstSettingsUpload();
             }
         },
         false,
     );
-
-
-    main_settings_submit.onclick = sendMainData;
-    memory_settings_submit.onclick = sendMemoryData;
-
-    //main_submit.onclick = main_submit
 }
 

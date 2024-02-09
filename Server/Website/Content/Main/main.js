@@ -3,37 +3,6 @@ import { myChartist } from "./myChartist.js";
 import { dataField } from "../dataField.js";
 
 {
-    function updateMainData() {
-        console.log("http://" + activeHost);
-        // загрузка полей с данными
-        uploadDataGET("http://" + activeHost + AllDataPaths[nameDataMain])
-            .then(successUpdateData)
-            .catch(error);
-        function successUpdateData(responseText) {
-            let splittedResponseText = responseText.split(';');
-            console.log("splittedResponseText", splittedResponseText);
-            for (let i = 0; i < allDataField.length; i++) {
-                allDataField[i].data = splittedResponseText[i];
-            }
-        }
-
-        // загрузка графиков
-        for (let chart of allChartists) {
-            uploadDataGET("http://" + activeHost + chart.pathname)
-                .then(successUpdateChart)
-                .catch(error);
-
-            function successUpdateChart(responseText) {
-                chart.parseData(responseText);
-                chart.redraw();
-            }
-        }
-
-        function error(error){
-            console.warn("In updateMainData(): " + error);
-        }
-    }
-
     // Поля с данными
     const allDataField = [
         new dataField(["header", "title"]),
@@ -48,7 +17,6 @@ import { dataField } from "../dataField.js";
         new dataField(["RUB_day"]),
     ];
 
-    // заполнение подписей к графикам
     let displayedDays = [];
     let displayedMonths = [];
     {
@@ -96,15 +64,63 @@ import { dataField } from "../dataField.js";
         new myChartist("RUB_chart", 1, 31, AllDataPaths[nameDataRubChart], displayedMonths, 100),
     ];
 
-    updateMainData(); // загрузка данных при первой подгрузке этого js
 
-    window.addEventListener(     // загрузка данных при последующих обрашениях к этому js
+    function rebindAtHTMLObjects() {
+        for (const chart of allChartists) {
+            chart.rebind();
+        }
+    }
+
+    function updateMainData() {
+        // загрузка полей с данными
+        uploadDataGET("http://" + activeHost + AllDataPaths[nameDataMain])
+            .then(successUpdateData)
+            .catch(error);
+        function successUpdateData(responseText) {
+            let splittedResponseText = responseText.split(';');
+            console.log("splittedResponseText", splittedResponseText);
+            for (let i = 0; i < allDataField.length; i++) {
+                allDataField[i].data = splittedResponseText[i];
+            }
+        }
+
+        // загрузка графиков
+        for (let chart of allChartists) {
+            uploadDataGET("http://" + activeHost + chart.pathname)
+                .then(successUpdateChart)
+                .catch(error);
+
+            function successUpdateChart(responseText) {
+                chart.parseData(responseText);
+                chart.redraw();
+            }
+        }
+
+        function error(error) {
+            console.warn("In updateMainData(): " + error);
+        }
+    }
+
+    function firstMainUpload() {
+        rebindAtHTMLObjects();
+        updateMainData();
+    }
+
+
+
+    if (!flagInPageLoading) {         // загрузка данных при первой подгрузке этого js, если остальные файлы страницы уже загружены
+        firstMainUpload();
+    }
+
+
+
+    window.addEventListener(        // загрузка данных при последующих обрашениях к этому js
         "updateData",
         (e) => {
             let MainUrl = new URL(window.location.href);
             if (MainUrl.searchParams.get(paramNameContent) === nameContentMain) {     // если сейчас загружена страница Main
                 console.log("used event updateData Main");   // LOG
-                updateMainData();
+                firstMainUpload();
             }
         },
         false,

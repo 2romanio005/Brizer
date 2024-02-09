@@ -12,7 +12,7 @@ export class dataField {
         //console.log("dataField_old", this.#data);       // LOG
         if (data === undefined) {
             this.#data = "null";
-        }else{
+        } else {
             this.#data = data;
         }
         for (const fieldId of this.#allFieldId) {

@@ -1,19 +1,15 @@
 export class myChartist {
     constructor(chart_id, labels_start, labels_len, pathname, signature = [], divisor = 1) {
         this.#chart_id = chart_id;
+        this.#signature = signature;
 
-        for (let i = 0; i < labels_len; i++) {
+        for (let i = 0; i < labels_len; i++) {          // заполнение оси x
             this.#data.labels.push(String(labels_start + i));
         }
 
         this.#pathname = pathname;
 
         this.#divisor = divisor;
-
-        for (let i = 0; i < signature.length; ++i) {
-            document.getElementById(this.#chart_id + '_signature_' + String.fromCharCode('a'.charCodeAt() + i)).innerText = signature[i];
-        }
-
         // console.log("Created myChartist:",          // LOG
         //     "\nid -", this.#chart_id,
         //     "\pathname -", this.#pathname,
@@ -22,16 +18,10 @@ export class myChartist {
         // )
     }
 
-    parseData(responseText) {
-        this.#data.series = [];
-        let line = responseText.split(';');
-        for (let i = 0; i < line.length - 1; ++i) {
-            this.#data.series.push([]);
-            for (let point of line[i].split(',')) {
-                this.#data.series[i].push(parseInt(point, 10) / this.#divisor);
-            }
+    rebind(){    // перепривязка к HTML объекту после перезагрузки HTML-я 
+        for (let i = 0; i < this.#signature.length; ++i) {
+            document.getElementById(this.#chart_id + '_signature_' + String.fromCharCode('a'.charCodeAt() + i)).innerText = this.#signature[i];
         }
-        // console.log("ParseData", this.#chart_id, this.#data);        // LOG
     }
 
     redraw() {
@@ -53,10 +43,23 @@ export class myChartist {
         new Chartist.Line('#' + this.#chart_id, this.#data, this.#options);
     }
 
+    parseData(responseText) {
+        this.#data.series = [];
+        let line = responseText.split(';');
+        for (let i = 0; i < line.length - 1; ++i) {
+            this.#data.series.push([]);
+            for (let point of line[i].split(',')) {
+                this.#data.series[i].push(parseInt(point, 10) / this.#divisor);
+            }
+        }
+        // console.log("ParseData", this.#chart_id, this.#data);        // LOG
+    }
+
+
+    
     #data = {
-        labels: [],
-        series: []
-        //[null], [null], [null], [null], [null], [null], [null]
+        labels: [],         // числа на оси x
+        series: []          // уже сами данные
     };
 
     #options = {
@@ -69,8 +72,10 @@ export class myChartist {
         return this.#pathname;
     }
 
+    #signature;         // подпись к графику
+
     #divisor;           // на что делить данные, приходящие с сервера
-    #chart_id;          // id графика
+    #chart_id;          // ID HTMLElement графика
 
     #pathname;          // путь к данными графика
 }

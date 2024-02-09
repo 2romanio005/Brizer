@@ -1,13 +1,19 @@
 export class inputField {
-    constructor(fieldId, forbiddenExpressions = "", changedColor = "var(--waitingColor)", data = "null") {
+    constructor(fieldId, forbiddenExpressions = "", changedColor = "var(--waitingColor)") {
         this.#fieldId = fieldId;
-        this.oldData = "null";
-        this.data = data;
+        this.#oldData = "null";
 
-        const HTML_field = eval(fieldId);
+        this.#forbiddenExpressions = forbiddenExpressions;
+        this.#changedColor = changedColor;
+    }
+
+    rebind() {
+        this.#oldData = "null";
+
+        const HTML_field = eval(this.#fieldId);
         HTML_field.onkeyup = () => {
-            HTML_field.value = HTML_field.value.replace(forbiddenExpressions, '');
-            this.setColorIfChanged(changedColor);
+            HTML_field.value = HTML_field.value.replace(this.#forbiddenExpressions, '');
+            this.setColorIfChanged(this.#changedColor);
             // console.log("Changed: " + this.#fieldId);
         }
     }
@@ -31,10 +37,10 @@ export class inputField {
         document.getElementById(this.#fieldId).style.background = color;
     }
 
-    resetOldData(){
+    resetOldData() {
         this.#oldData = this.data;
     }
-    resetData(){
+    resetData() {
         document.getElementById(this.#fieldId).value = this.#oldData;
     }
 
@@ -55,7 +61,11 @@ export class inputField {
     }
 
     #oldData;           // данные, подгруженные с бризера
-    #fieldId;           // HTMLElement объект
+    #fieldId;           // ID HTMLElement объекта
+
+
+    #forbiddenExpressions;  // запрёшённая для ввода последовательность
+    #changedColor;          // цвет полня если оно изменено
 }
 
 

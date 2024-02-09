@@ -2,7 +2,7 @@ const paramNameContent = "nameContent";   // имя параметра с пут
 const paramHost = "host";                 // имя параметра с путём к данным
 
 
-const eventUpdateData = new Event("updateData");
+const eventUpdateData = new Event("updateData");  // обновление загруженой страницы
 
 
 const hostRoman = "94.242.44.182:56567";
@@ -18,8 +18,8 @@ const AllPagesPaths =
 {
     "": ["/Content/Directing/directing.html"],
     [nameContentDirecting]: ["/Content/Directing/directing.html"],
-    [nameContentMain]: ["/Content/Main/main.html", "/Content/Main/main.js", "/Content/Main/myChartist.js", "/Content/dataField.js"],
-    [nameContentSettings]: ["/Content/Settings/settings.html", "/Content/dataField.js", "/Content/Settings/settings.js"],
+    [nameContentMain]: ["/Content/Main/main.html", "/Content/Main/myChartist.js", "/Content/dataField.js", "/Content/Main/main.js"],
+    [nameContentSettings]: ["/Content/Settings/settings.html", "/Content/dataField.js", "/Content/Settings/inputField.js", "/Content/Settings/settings.js"],
 }
 
 
@@ -48,16 +48,7 @@ const AllSavePaths =
 }
 
 
-// активный host с данными
-let activeHost = "";
-function updateActiveHost() {
-    let mainUrl = new URL(window.location.href);
-    let hostData = mainUrl.searchParams.get(paramHost);
 
-    console.log("Active hostData:", activeHost);
-    if (activeHost != hostData) {
-        activeHost = hostData;
-        console.log("New hostData:", activeHost);
-    }
-}
+
+
 
