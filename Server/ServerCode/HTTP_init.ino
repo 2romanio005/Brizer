@@ -44,7 +44,7 @@ void LoadingData_Main_RubChart() {                    // Отправка гра
 void LoadingData_Settings_SettingsData() {            // Отправка настроек 
   HTTP.sendHeader("Access-Control-Allow-Origin", alliedOrigin);
   String message = "";
-  for(byte i = 0; i < numberMainSettingsArg; i++){
+  for(byte i = 0; i < numberMainSettingsMessage; i++){
     message += mainSettingsMessage[i] + ';';
   }
   HTTP.send(200, "text/plain", message);

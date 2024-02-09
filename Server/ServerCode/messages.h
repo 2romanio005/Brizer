@@ -24,7 +24,8 @@ const char *const allNameMainSettingsArg[numberMainSettingsArg] = {
   "activeDisplayTime"
 };
 
-String mainSettingsMessage[numberMainSettingsArg] = {
+#define numberMainSettingsMessage 12
+String mainSettingsMessage[numberMainSettingsMessage] = {
   String(brizerSettingsTitle),
   "0",
   "0",
