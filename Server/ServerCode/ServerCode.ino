@@ -1,35 +1,19 @@
-#include "set.h"
+#include "Main.h"
 
 void setup() {
-
-  ESP8266WebServer HTTP(port);
   Serial.begin(9600);
   Serial.println();
   delay(50);
 
-  //  Serial.println("Start 4-FS");
-  FS_init();                                    // Запускаем файловую систему
-  //  Serial.println("Step7-FileConfig");
-  configSetup = readFile("config.json", 4096);
-  jsonWrite(configJson, "SSDP", jsonRead(configSetup, "SSDP"));
-
-  //  Serial.println("Start 1-WIFI");
-  WIFIinit();                                   // Запускаем WIFI
-
-  //  Serial.println("Start 3-SSDP");
-  SSDP_init();                                  // Настраиваем и запускаем SSDP интерфейс
-
-  //  Serial.println("Start 2-WebServer");
+  WIFI_init();                                  // Запускаем WIFI
+  ESPNOW_init();                     // Настраиваем ESPNOW
   HTTP_init();                                  // Настраиваем и запускаем HTTP интерфейс
-
-  ftpSrv.begin("2020", "2020");                                       // Поднимаем FTP-сервер для удобства отладки работы HTML (логин: relay, пароль: relay)
-
 }
 
 
 void loop() {
   HTTP.handleClient();
-  ftpSrv.handleFTP();                                                 // Обработчик FTP-соединений
+//  ftpSrv.handleFTP();                                                 // Обработчик FTP-соединений
 
   if (Serial.available() > 0) {
     buf_char = Serial.read();

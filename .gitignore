@@ -1,7 +1,7 @@
 Старое/
 *.mp4
 Server/Website/.vs/
-Server/Website/.tmp/
+.tmp/
 
 Server/Website/Content/Main/chartist/
 !Server/Website/Content/Main/chartist/chartist.min.js
