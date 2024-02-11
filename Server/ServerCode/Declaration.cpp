@@ -20,7 +20,6 @@ MessageDataBetweenEsp message_for_esp { "111.11" };
 
 
 char value_string_parsing = 0;
-char buf_char;
-String buf_string;
+String serialReadingBuf;
 
 uint32_t time_asking = 0;

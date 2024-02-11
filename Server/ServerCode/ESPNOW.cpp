@@ -1,6 +1,6 @@
 #include "Main.h"
 
-void ESPNOW_init() {
+void ESPnow_init() {
   esp_now_init();   // общение между двумя esp
 #ifdef type_brizer   // приёмник
   esp_now_set_self_role(ESP_NOW_ROLE_SLAVE);

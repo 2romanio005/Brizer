@@ -28,7 +28,6 @@ extern MessageDataBetweenEsp message_for_esp;
 
 
 extern char value_string_parsing;
-extern char buf_char;
-extern String buf_string;
+extern String serialReadingBuf;
 
 extern uint32_t time_asking;

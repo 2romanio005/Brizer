@@ -142,6 +142,14 @@ import { inputField } from "./inputField.js";
         firstSettingsUpload();
     }
 
+    const Socket = new WebSocket("ws://" + activeHost + ":81");
+    Socket.onmessage = function(event){
+        updateSettingsData();
+      //document.getElementById("rxConsole").value += event.data;
+    }
+
+
+
 
 
     window.addEventListener(
