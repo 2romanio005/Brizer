@@ -11,16 +11,21 @@
 
 ### $\mathbb{\color[RGB]{255,127,0}{Стек \ технологий \ разработки}}$
 
-- C++ --- прога для микроконтроллера(МК) Arduino NANO ($\mathbb{\color[RGB]{252,193,83}{ATmega328p}}$)
+- $\mathbb{\color[RGB]{252,193,83}{C++}}$ --- прога для микроконтроллера(МК) Arduino NANO ($\mathbb{\color[RGB]{252,193,83}{ATmega328p}}$)
 	+ Жёсткая и тщательная $\mathbb{\color[RGB]{252,193,83}{оптимизация \ кода}}$, чтобы он влез в память 32КБ Flash, 2КБ оперативной, 1КБ энергонезависимой EEPROM.
 	+ $\mathbb{\color[RGB]{252,193,83}{WatchDog}}$.
 	+ $\mathbb{\color[RGB]{252,193,83}{Прерывания}}$.
+	+ Много $\mathbb{\color[RGB]{шаблонов}}$.
 	+ Много функций, мало ООП.
-- С++ --- прога для МК $\mathbb{\color[RGB]{252,193,83}{ESP8266}}$ (Tensilica’s L106)
+- $\mathbb{\color[RGB]{252,193,83}{С++}$ --- прога для МК $\mathbb{\color[RGB]{252,193,83}{ESP8266}}$ (Tensilica’s L106)
 	+ $\mathbb{\color[RGB]{252,193,83}{Сервер}}$ на С++.
+	+ $\mathbb{\color[RGB]{252,193,83}{HTTP, \ FTP}}$ протоколы
 	+ Общение с Arduino по $\mathbb{\color[RGB]{252,193,83}{UART(RX/TX)}}$ протоколу.
 - HTML, CSS, SASS, JS, AJAX, web sockets --- сайт для бризера (новая версия ещё в производстве)
 	+ Работа с $\mathbb{\color[RGB]{252,193,83}{CORS}}$ запросами.
+- $\mathbb{\color[RGB]{252,193,83}{Схемотехника}}$
+	+ Много проводов
+	+ Учимся паять
 	
 ### $\mathbb{\color[RGB]{255,127,0}{Среды \ разработки}}$
 
