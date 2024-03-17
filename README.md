@@ -15,9 +15,9 @@
 	+ Жёсткая и тщательная $\mathbb{\color[RGB]{252,193,83}{оптимизация \ кода}}$, чтобы он влез в память 32КБ Flash, 2КБ оперативной, 1КБ энергонезависимой EEPROM.
 	+ $\mathbb{\color[RGB]{252,193,83}{WatchDog}}$.
 	+ $\mathbb{\color[RGB]{252,193,83}{Прерывания}}$.
-	+ Много $\mathbb{\color[RGB]{шаблонов}}$.
+	+ Много $\mathbb{\color[RGB]{252,193,83}{шаблонов}}$.
 	+ Много функций, мало ООП.
-- $\mathbb{\color[RGB]{252,193,83}{С++}$ --- прога для МК $\mathbb{\color[RGB]{252,193,83}{ESP8266}}$ (Tensilica’s L106)
+- $\mathbb{\color[RGB]{252,193,83}{С++}}$ --- прога для МК $\mathbb{\color[RGB]{252,193,83}{ESP8266}}$ (Tensilica’s L106)
 	+ $\mathbb{\color[RGB]{252,193,83}{Сервер}}$ на С++.
 	+ $\mathbb{\color[RGB]{252,193,83}{HTTP, \ FTP}}$ протоколы
 	+ Общение с Arduino по $\mathbb{\color[RGB]{252,193,83}{UART(RX/TX)}}$ протоколу.
